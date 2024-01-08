@@ -15,7 +15,7 @@ productRouter.get("/", async(req,res)=>{
         
     try {
         const query = {}
-        const PAGE_SIZE = 12;
+        const PAGE_SIZE = 60;
         const page = req.query.page
         const skip = PAGE_SIZE * (page - 1)
         const keyword = req.query.keyword
@@ -30,7 +30,7 @@ productRouter.get("/", async(req,res)=>{
         const products =  await collection
         .find(query)
         .skip(skip)
-        .limit(12)
+        .limit(60)
         .toArray()
 
         const count = await collection.countDocuments(query)
@@ -57,21 +57,28 @@ productRouter.post('/upload', avatarUpload, async(req,res)=>{
 
     try {
         const products = {
+            sell:req.body.sell,
+            asset:req.body.asset,
+            province:req.body.province,
+            district:req.body.district,
+            subDistrict:req.body.subDistrict,
+            status:req.body.status,
             name:req.body.name,
             code:req.body.code,
             price:Number(req.body.price),
-            description:req.body.description
+            description:req.body.description,
+            link:req.body.link
         }
         
         const avatarUrl = await cloudinaryUpload(req.files);
         products['avatars'] = avatarUrl;
         products['created_at'] = new Date();
 
-        const collection = db.collection('products')
+        const collection = db.collection('assets')
         await collection.insertOne(products)
 
         return res.status(200).json({
-            message:'Product has been created successfully'
+            message:'Asset has been created successfully'
         })
     } catch (error) {
         return res.status(404).json({data:error})

@@ -20,6 +20,13 @@ const UploadProductPage = () => {
         setDescription,
         avatars,
         setAvatars,
+        selectSellType,
+        selectAssetType,
+        selectProvince,
+        selectDistrict,
+        selectSubDistrict,
+        selectStatus,
+        link,
         setIsLoading,
         setIsSubmit,
         setIsUpdate,
@@ -39,10 +46,17 @@ const UploadProductPage = () => {
     setIsLoading(true)
     setIsUploadCompleted(false)
     const formData = new FormData();
+    formData.append('sell',selectSellType)
+    formData.append('asset',selectAssetType)
+    formData.append('province',selectProvince)
+    formData.append('district',selectDistrict)
+    formData.append('subDistrict',selectSubDistrict)
+    formData.append('status',selectStatus)
     formData.append('name',name);
     formData.append('code',code);
     formData.append('price',price);
     formData.append('description',description);
+    formData.append('link',link);
     avatars.forEach((file)=>formData.append('avatar',file))
     handleUpload(formData)
   }

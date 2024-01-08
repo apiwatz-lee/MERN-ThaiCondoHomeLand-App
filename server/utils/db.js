@@ -8,4 +8,4 @@ export const client = new MongoClient(connectionString, {
     useUnifiedTopology: true,
   });
 
-export const db = client.db("xsurface");
+export const db = client.db("thaicondo");

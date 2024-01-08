@@ -25,8 +25,6 @@ const ProductListPage = () => {
 
   const toast = useToast()
 
-  console.log(isPaymentSuccess);
-
   useEffect(()=>{
 
     if(isUploadCompleted){

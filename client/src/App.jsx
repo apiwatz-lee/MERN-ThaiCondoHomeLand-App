@@ -17,12 +17,23 @@ import CheckoutSuccess from './pages/CheckoutSuccess'
 export const AppContext = createContext(null)
 
 function App() {
-
+  //state for upload product
   const [name,setName] = useState('')
   const [code,setCode] = useState('')
   const [price,setPrice] = useState('')
   const [description,setDescription] = useState('')
   const [avatars,setAvatars] = useState([])
+  const [fetchProvince, setFetchProvince] = useState([]);
+  const [district, setDistrict] = useState([]);
+  const [subDistrict, setSubDistrict] = useState([]);
+  const [selectProvince, setSelectProvince] = useState('');
+  const [selectDistrict, setSelectDistrict] = useState('');
+  const [selectSubDistrict, setSelectSubDistrict] = useState('');
+  const [selectSellType, setSelectSellType] = useState('');
+  const [selectAssetType, setSelectAssetType] = useState('');
+  const [selectStatus, setSelectStatus] = useState('');
+  const [link, setLink] = useState('');
+
   const [isCancel,setIsCancel] = useState(false)
   const [isLoading,setIsLoading] = useState(false)
   const [isSubmit,setIsSubmit] = useState(false)
@@ -38,6 +49,7 @@ function App() {
   const [totalQuantity,setTotalQuantity] = useState(0)
   const [page,setPage] = useState(1)
   const [totalPage,setTotalPage] = useState(0)
+  
 
   const {isAuthenticated} = useAuth();
   
@@ -54,6 +66,26 @@ function App() {
         setDescription,
         avatars,
         setAvatars,
+        fetchProvince,
+        setFetchProvince,
+        district,
+        setDistrict,
+        subDistrict,
+        setSubDistrict,
+        selectProvince,
+        setSelectProvince,
+        selectDistrict,
+        setSelectDistrict,
+        selectSubDistrict,
+        setSelectSubDistrict,
+        selectSellType,
+        setSelectSellType,
+        selectAssetType,
+        setSelectAssetType,
+        selectStatus,
+        setSelectStatus,
+        link,
+        setLink,
         isCancel,
         setIsCancel,
         isLoading,

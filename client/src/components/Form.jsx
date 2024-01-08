@@ -7,8 +7,14 @@ import { AppContext } from '../App'
 import {useNavigate} from 'react-router-dom'
 import { useToast } from '@chakra-ui/react';
 import Textarea from './Textarea'
+import { useEffect } from 'react'
+import DropDown from './DropDown'
+import { sellOption,assetOption,statusOption } from '../data/Option'
+import axios from 'axios'
 
 const Form = ({params}) => {
+
+    const server = import.meta.env.VITE_API
 
     const {name,
           setName,
@@ -19,8 +25,25 @@ const Form = ({params}) => {
           description,
           setDescription,
           avatars,
+          fetchProvince,
+          setFetchProvince,
+          district,
+          setDistrict,
+          subDistrict,
+          setSubDistrict,
+          selectProvince,
+          setSelectProvince,
+          selectDistrict,
+          setSelectDistrict,
+          setSelectSubDistrict,
+          setSelectSellType,
+          setSelectAssetType,
+          setSelectStatus,
+          link,
+          setLink,
           setIsUpdate,
-          setIsSubmit,isDelete,setIsDelete} = useContext(AppContext)
+          setIsSubmit,
+          setIsDelete} = useContext(AppContext)
           
     const navigate = useNavigate();
     const toast = useToast()
@@ -87,7 +110,59 @@ const Form = ({params}) => {
         }
       }
 
-     
+      const fetchThaiData = async () => {
+        try {
+          const result = await axios.get(`${server}/province`);
+          const provinceOption = result.data.data.map((item) => {
+            return { id: item.id, option: item.name_th, amphure: item.amphure };
+          });
+          setFetchProvince(provinceOption);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
+      const handleFindDistrict = () => {
+        const cloneProvice = [...fetchProvince];
+        const findProvince = cloneProvice.find(
+          (item) => item.option === selectProvince
+        );
+    
+        const eachDistrict = findProvince.amphure;
+        const districtOption = eachDistrict.map((item) => {
+          return { id: item.id, option: item.name_th, tambon: item.tambon };
+        });
+        setDistrict(districtOption);
+      };
+    
+      const handleFindSubDistrict = () => {
+        const cloneDistrict = [...district];
+        const findDistrict = cloneDistrict.find(
+          (item) => item.option === selectDistrict
+        );
+        const subDistrictOption = findDistrict.tambon.map((item) => {
+          return { id: item.id, option: item.name_th };
+        });
+        setSubDistrict(subDistrictOption);
+      };
+    
+      useEffect(() => {
+        fetchThaiData();
+        if (selectProvince) {
+          handleFindDistrict();
+          setSelectDistrict('');
+          setSelectSubDistrict('');
+        }
+      }, [selectProvince]);
+    
+      useEffect(() => {
+        if (selectDistrict) {
+          handleFindSubDistrict();
+          setSelectSubDistrict('');
+        } else {
+          setSubDistrict([]);
+        }
+      }, [selectDistrict]);
 
     return (
         <>
@@ -95,6 +170,44 @@ const Form = ({params}) => {
             <h2 className='text-gray-700 text-lg text-center sm:text-left'>Upload Image</h2>
             <Dropzone/>
             <h3 className='text-center sm:text-right text-gray-400 text-sm font-light'>Image Upload ({avatars.length}/6)</h3>
+            <section className='grid grid-cols-6 my-5 gap-2'>
+              <DropDown
+                title='Sell Type'
+                id='sell_type'
+                option={sellOption}
+                setSelect={setSelectSellType}
+              />
+              <DropDown
+                title='Asset Type'
+                id='asset_type'
+                option={assetOption}
+                setSelect={setSelectAssetType}
+              />
+              <DropDown
+                title='Province'
+                id='province'
+                option={fetchProvince}
+                setSelect={setSelectProvince}
+              />
+              <DropDown
+                title='District'
+                id='district'
+                option={district}
+                setSelect={setSelectDistrict}
+              />
+              <DropDown
+                title='Sub District'
+                id='sub_district'
+                option={subDistrict}
+                setSelect={setSelectSubDistrict}
+              />
+              <DropDown
+                title='Status'
+                id='status'
+                option={statusOption}
+                setSelect={setSelectStatus}
+              />
+            </section>
             <Input 
                 id='name' 
                 title='Product name' 
@@ -116,7 +229,6 @@ const Form = ({params}) => {
                 placeholder='1,000' 
                 value={price} 
                 onChange={(e)=>{setPrice(e.target.value)}}/>
-
             <Textarea
                 id='description'
                 title='Description'
@@ -124,6 +236,13 @@ const Form = ({params}) => {
                 value={description}
                 onChange={(e)=>setDescription(e.target.value)}
               />
+               <Input 
+                id='link' 
+                title='Link' 
+                type='text' 
+                placeholder='Tiktok link' 
+                value={link} 
+                onChange={(e)=>{setLink(e.target.value)}}/>
              
           <div className='flex justify-center gap-5 py-5 sm:p-10'>
             <Button 
