@@ -74,7 +74,7 @@ productRouter.post('/upload', avatarUpload, async(req,res)=>{
         products['avatars'] = avatarUrl;
         products['created_at'] = new Date();
 
-        const collection = db.collection('assets')
+        const collection = db.collection('products')
         await collection.insertOne(products)
 
         return res.status(200).json({

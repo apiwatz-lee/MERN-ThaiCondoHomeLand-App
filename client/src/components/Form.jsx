@@ -170,7 +170,7 @@ const Form = ({params}) => {
             <h2 className='text-gray-700 text-lg text-center sm:text-left'>Upload Image</h2>
             <Dropzone/>
             <h3 className='text-center sm:text-right text-gray-400 text-sm font-light'>Image Upload ({avatars.length}/6)</h3>
-            <section className='grid grid-cols-6 my-5 gap-2'>
+            <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 my-5 gap-2'>
               <DropDown
                 title='Sell Type'
                 id='sell_type'

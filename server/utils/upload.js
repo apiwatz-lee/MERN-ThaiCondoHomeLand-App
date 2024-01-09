@@ -9,7 +9,7 @@ const cloudinaryUpload = async (files) => {
 
     try {
       result = await cloudinary.v2.uploader.upload(file.path, {
-        folder: "xsurface",
+        folder: "thaicondo",
         private: true,
       });
     } catch (error) {
