@@ -8,6 +8,7 @@ export const assetOption = [
   { id: 2, option: 'ทาวเฮาส์' },
   { id: 3, option: 'คอนโด' },
   { id: 4, option: 'ที่ดิน' },
+  { id: 5, option: 'อาคารพาณิชย์' },
 ];
 
 export const statusOption = [

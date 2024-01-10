@@ -57,6 +57,7 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
     })
   }
 
+
   return (
     <>
         <div className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-5 sm:gap-12'>
@@ -66,18 +67,7 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
             <p className='text-gray-400 text-center text-xl'>{productDetail[0]?.code}</p>
             <p className='text-[#E04132] font-bold text-4xl'>{productDetail[0]?.price && formatNumber(productDetail[0].price)} ฿</p>
             <p className='text-gray-800'>{productDetail[0]?.description}</p>
-            <div className='w-full pb-10 xl:pb-0 mt-2 flex justify-center items-center gap-5 py-5'>
-              <button 
-                onClick={isAuthenticated ? ()=>handleAddToCart() : ()=>handleAlert()}
-                className='border p-4 rounded-xl w-52 text-white bg-[#E04132] text-lg sm:text-2xl font-bold hover:bg-orange-700 duration-300'> 
-                Add to cart
-              </button>
-              <button 
-                onClick={()=>navigate('/product')}
-                className='border p-4 rounded-xl w-52 text-gray-700 bg-gray-300 text-lg sm:text-2xl font-bold hover:bg-white hover:text-black duration-300'> 
-                Shop more
-              </button>
-            </div>
+
           </section>
       
           <section className='flex flex-wrap justify-center gap-3 px-5'>

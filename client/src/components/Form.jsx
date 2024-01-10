@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import DropDown from './DropDown'
 import { sellOption,assetOption,statusOption } from '../data/Option'
 import axios from 'axios'
+import { NumericFormat } from 'react-number-format';
 
 const Form = ({params}) => {
 
@@ -222,13 +223,21 @@ const Form = ({params}) => {
                 placeholder='Code' 
                 value={code} 
                 onChange={(e)=>{setCode(e.target.value)}}/>
-            <Input 
+            {/* <Input 
                 id='price' 
                 title='Price' 
                 type='number' 
-                placeholder='1,000' 
+                placeholder='1,000'
                 value={price} 
-                onChange={(e)=>{setPrice(e.target.value)}}/>
+                onChange={(e)=>{setPrice(e.target.value)}}/> */}
+
+            <label name='price' className='font-light text-left'>Price</label>
+            <NumericFormat
+              value={price}
+              thousandSeparator
+              className='border rounded-full p-3 pl-7 placeholder:font-light placeholder:text-gray-300 outline-none text-gray-500 font-light'
+              onChange={(e)=>{setPrice(e.target.value)}}
+            />
             <Textarea
                 id='description'
                 title='Description'
