@@ -54,7 +54,7 @@ const UploadProductPage = () => {
     formData.append('status',selectStatus)
     formData.append('name',name);
     formData.append('code',code);
-    formData.append('price',price);
+    formData.append('price',price.split(',').join(''));
     formData.append('description',description);
     formData.append('link',link);
     avatars.forEach((file)=>formData.append('avatar',file))

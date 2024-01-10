@@ -165,6 +165,8 @@ const Form = ({params}) => {
         }
       }, [selectDistrict]);
 
+      console.log(typeof price,price)
+
     return (
         <>
           <form className='flex flex-col gap-5 w-full py-5'>
@@ -223,20 +225,13 @@ const Form = ({params}) => {
                 placeholder='Code' 
                 value={code} 
                 onChange={(e)=>{setCode(e.target.value)}}/>
-            {/* <Input 
-                id='price' 
-                title='Price' 
-                type='number' 
-                placeholder='1,000'
-                value={price} 
-                onChange={(e)=>{setPrice(e.target.value)}}/> */}
-
             <label name='price' className='font-light text-left'>Price</label>
             <NumericFormat
               value={price}
               thousandSeparator
               className='border rounded-full p-3 pl-7 placeholder:font-light placeholder:text-gray-300 outline-none text-gray-500 font-light'
               onChange={(e)=>{setPrice(e.target.value)}}
+              placeholder='1,000,000'
             />
             <Textarea
                 id='description'
