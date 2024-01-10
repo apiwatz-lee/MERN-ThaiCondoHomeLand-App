@@ -88,10 +88,17 @@ const UploadProductPage = () => {
       setIsLoading(true)
       setIsUpdatedCompleted(false)
       const data = {
+        sell:selectSellType,
+        asset:selectAssetType,
+        province:selectProvince,
+        district:selectDistrict,
+        subDistrict:selectSubDistrict,
+        status:selectStatus,
         name:name,
         code:code,
         price:price,
         description:description,
+        link:link,
         avatars:avatars
       }
       await axios.put(`${server}/product/upload/${params.id}`,data)
