@@ -36,9 +36,13 @@ const Form = ({params}) => {
           setSelectProvince,
           selectDistrict,
           setSelectDistrict,
+          selectSubDistrict,
           setSelectSubDistrict,
+          selectSellType,
           setSelectSellType,
+          selectAssetType,
           setSelectAssetType,
+          selectStatus,
           setSelectStatus,
           link,
           setLink,
@@ -125,10 +129,7 @@ const Form = ({params}) => {
     
       const handleFindDistrict = () => {
         const cloneProvice = [...fetchProvince];
-        const findProvince = cloneProvice.find(
-          (item) => item.option === selectProvince
-        );
-    
+        const findProvince = cloneProvice.find((item) => item.option === selectProvince);
         const eachDistrict = findProvince.amphure;
         const districtOption = eachDistrict.map((item) => {
           return { id: item.id, option: item.name_th, tambon: item.tambon };
@@ -138,10 +139,8 @@ const Form = ({params}) => {
     
       const handleFindSubDistrict = () => {
         const cloneDistrict = [...district];
-        const findDistrict = cloneDistrict.find(
-          (item) => item.option === selectDistrict
-        );
-        const subDistrictOption = findDistrict.tambon.map((item) => {
+        const findDistrict = cloneDistrict.find((item) => item.option === selectDistrict);
+        const subDistrictOption = findDistrict?.tambon.map((item) => {
           return { id: item.id, option: item.name_th };
         });
         setSubDistrict(subDistrictOption);
@@ -151,21 +150,15 @@ const Form = ({params}) => {
         fetchThaiData();
         if (selectProvince) {
           handleFindDistrict();
-          setSelectDistrict('');
-          setSelectSubDistrict('');
         }
       }, [selectProvince]);
     
       useEffect(() => {
-        if (selectDistrict) {
+       if (selectDistrict) {
           handleFindSubDistrict();
-          setSelectSubDistrict('');
-        } else {
-          setSubDistrict([]);
         }
-      }, [selectDistrict]);
+      }, [district,selectDistrict]);
 
-      console.log(typeof price,price)
 
     return (
         <>
@@ -179,36 +172,42 @@ const Form = ({params}) => {
                 id='sell_type'
                 option={sellOption}
                 setSelect={setSelectSellType}
+                select={selectSellType}
               />
               <DropDown
                 title='Asset Type'
                 id='asset_type'
                 option={assetOption}
                 setSelect={setSelectAssetType}
+                select={selectAssetType}
               />
               <DropDown
                 title='Province'
                 id='province'
                 option={fetchProvince}
                 setSelect={setSelectProvince}
+                select={selectProvince}
               />
               <DropDown
                 title='District'
                 id='district'
                 option={district}
                 setSelect={setSelectDistrict}
+                select={selectDistrict}
               />
               <DropDown
                 title='Sub District'
                 id='sub_district'
                 option={subDistrict}
                 setSelect={setSelectSubDistrict}
+                select={selectSubDistrict}
               />
               <DropDown
                 title='Status'
                 id='status'
                 option={statusOption}
                 setSelect={setSelectStatus}
+                select={selectStatus}
               />
             </section>
             <Input 

@@ -20,13 +20,21 @@ const UploadProductPage = () => {
         setDescription,
         avatars,
         setAvatars,
+        setFetchProvince,
         selectSellType,
+        setSelectSellType,
         selectAssetType,
+        setSelectAssetType,
         selectProvince,
+        setSelectProvince,
         selectDistrict,
+        setSelectDistrict,
         selectSubDistrict,
+        setSelectSubDistrict,
         selectStatus,
+        setSelectStatus,
         link,
+        setLink,
         setIsLoading,
         setIsSubmit,
         setIsUpdate,
@@ -94,22 +102,7 @@ const UploadProductPage = () => {
       console.log(error);
     }
   }
-
-  const getProductById = async() => {
-    try {
-      if(params.id){
-        const response = await axios.get(`${server}/product/${params.id}`)
-        setAvatars([...response.data.data[0].avatars])
-        setName(response.data.data[0].name)
-        setPrice(response.data.data[0].price)
-        setCode(response.data.data[0].code)
-        setDescription(response.data.data[0].description)
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  
   const handleDelete = async(e) => {
     e.preventDefault();
     try {
@@ -124,10 +117,69 @@ const UploadProductPage = () => {
     }
   }
 
-  useEffect(()=>{
-    getProductById()
-  },[])
+  const fetchThaiData = async () => {
+    try {
+      const result = await axios.get(`${server}/province`);
+      const provinceOption = result.data.data.map((item) => {
+        return { id: item.id, option: item.name_th, amphure: item.amphure };
+      });
+      setFetchProvince(provinceOption);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  const getProductById = async() => {
+    try {
+        const response = await axios.get(`${server}/product/${params.id}`)
+        setSelectSellType(response.data.data[0].sell)
+        setSelectAssetType(response.data.data[0].asset)
+        setSelectProvince(response.data.data[0].province)
+        setSelectDistrict(response.data.data[0].district)
+        setSelectSubDistrict(response.data.data[0].subDistrict)
+        setSelectStatus(response.data.data[0].status)
+        setAvatars([...response.data.data[0].avatars])
+        setName(response.data.data[0].name)
+        setPrice(response.data.data[0].price)
+        setCode(response.data.data[0].code)
+        setDescription(response.data.data[0].description)
+        setLink(response.data.data[0].link)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleClearValue = () => {
+    setSelectSellType('')
+    setSelectAssetType('')
+    setSelectProvince('')
+    setSelectDistrict('')
+    setSelectSubDistrict('')
+    setSelectStatus('')
+    setAvatars([])
+    setName('')
+    setPrice('')
+    setCode('')
+    setDescription('')
+    setLink('')
+  }
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (params.id) {
+          await fetchThaiData();
+          await getProductById();
+        }else{
+          handleClearValue();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchData();
+  }, [params.id]);
 
   return (
     <>
