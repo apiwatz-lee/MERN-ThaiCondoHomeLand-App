@@ -39,39 +39,26 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
         position:'top'
       }) 
     }
-    
   }
 
   const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
-  const handleAlert = () => {
-    toast({
-      title: 'Sign in',
-      description: "Please log in before adding to the cart.",
-      status: 'error',
-      duration: 2000,
-      isClosable: true,
-      position:'top'
-    })
-  }
-
-
   return (
     <>
-        <div className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-5 sm:gap-12'>
+        <div className='xl:w-[50%] flex flex-col-reverse xl:flex-col justify-center gap-5 sm:gap-16'>
 
-          <section className='w-full xl:h-[340px] px-5 text-center xl:text-start flex flex-col justify-evenly gap-3'>
+          <section className='w-full xl:h-[400px] px-5 text-center xl:text-start flex flex-col justify-evenly gap-3'>
             <h1 className='w-full pt-5 xl:pt-0 font-bold text-3xl xl:text-5xl text-center'>{productDetail[0]?.name}</h1>
             <p className='text-gray-400 text-center text-xl'>{productDetail[0]?.code}</p>
             <p className='text-[#E04132] font-bold text-4xl'>{productDetail[0]?.price && formatNumber(productDetail[0].price)} ฿</p>
-            <p className='text-gray-800'>{productDetail[0]?.description}</p>
-
+            <pre className='text-gray-800 font-poppins p-2'>{productDetail[0]?.description}</pre>
           </section>
       
           <section className='flex flex-wrap justify-center gap-3 px-5'>
-            { preview.length !== 0 ?                 
+         
+            { preview.length !== 0 ?                  
               productDetail[0]?.avatars?.map((item)=> 
                 <img 
                   key={item.publicId}

@@ -34,15 +34,15 @@ export default function Navigator() {
         name = decodeToken.firstname
         if(role === 'admin'){
             anchor = [
-                {id:1,name:'Product list',path:'/product',icon: <CiShoppingTag/>},
-                {id:2,name:'Upload Products',path:'/product/upload',icon:<IoCloudUploadOutline />}]
+                {id:1,name:'Assets list',path:'/product',icon: <CiShoppingTag/>},
+                {id:2,name:'Upload Assets',path:'/product/upload',icon:<IoCloudUploadOutline />}]
         }else if(role === 'user'){
-            anchor = [{id:1,name:'Product list',path:'/product',icon:<CiShoppingTag/>}]
+            anchor = [{id:1,name:'Assets list',path:'/product',icon:<CiShoppingTag/>}]
         }
         
     }else if(!isAuthenticated){
          anchor = [
-            {id:1,name:'Product list',path:'/product',icon: <CiShoppingTag/>},
+            {id:1,name:'Assets list',path:'/product',icon: <CiShoppingTag/>},
         ]
     }
 
