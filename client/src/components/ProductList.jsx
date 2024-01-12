@@ -65,8 +65,6 @@ const ProductList = () => {
     navigate(`/product/upload/${id}`)
   }
   
-  console.log(products);
-
   return (
     <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
 

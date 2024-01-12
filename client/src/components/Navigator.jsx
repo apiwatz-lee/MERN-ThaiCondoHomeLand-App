@@ -63,7 +63,7 @@ export default function Navigator() {
   
    
     return (
-        <div className='relative'>
+        <>
             <aside className={`sm:hidden fixed z-40 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-cyan-950 duration-300`}>
                 <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 hover:text-gray-200 duration-1000 cursor-pointer`} onClick={toggleMenu}/>
                 <ul className='flex flex-col justify-center items-center gap-5 p-20'>
@@ -82,7 +82,7 @@ export default function Navigator() {
                 </ul>
             </aside>
 
-            <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 py-5 mb-5 shadow-md'>
+            <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 py-5 mb-5 shadow-md sticky top-0 z-50 bg-white'>
                 <ul className='hidden sm:flex justify-center items-center gap-5 lg:p-3 h-16'>
                     {anchor?.map((item)=>{
                         return <li key={item.id}>
@@ -119,7 +119,7 @@ export default function Navigator() {
                     </li>
                 </ul>
             </nav>
-        </div>
+        </>
     )
 }
         
