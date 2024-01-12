@@ -42,7 +42,7 @@ const AuthProvider = (props) => {
             localStorage.setItem('token',token)
             const userDataFromToken = jwtDecode(token)
             setState({...state,user:userDataFromToken})
-            navigate('/product')
+            navigate('/')
             toast({
                 title: 'Login successfully',
                 description: `Hello ${userDataFromToken.firstname}, Have a good day!`,

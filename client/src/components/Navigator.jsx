@@ -34,15 +34,15 @@ export default function Navigator() {
         name = decodeToken.firstname
         if(role === 'admin'){
             anchor = [
-                {id:1,name:'Assets list',path:'/product',icon: <CiShoppingTag/>},
+                {id:1,name:'Assets list',path:'/',icon: <CiShoppingTag/>},
                 {id:2,name:'Upload Assets',path:'/product/upload',icon:<IoCloudUploadOutline />}]
         }else if(role === 'user'){
-            anchor = [{id:1,name:'Assets list',path:'/product',icon:<CiShoppingTag/>}]
+            anchor = [{id:1,name:'Assets list',path:'/',icon:<CiShoppingTag/>}]
         }
         
     }else if(!isAuthenticated){
          anchor = [
-            {id:1,name:'Assets list',path:'/product',icon: <CiShoppingTag/>},
+            {id:1,name:'Assets list',path:'/',icon: <CiShoppingTag/>},
         ]
     }
 
@@ -97,10 +97,6 @@ export default function Navigator() {
 
                 <ul className='relative flex justify-between sm:justify-center items-center p-3 w-full sm:w-auto'>
 
-                    <Link to ='/product/cart' className={`hidden sm:flex justify-center items-center ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
-                        <FiShoppingCart className={`text-3xl text-gray-500 hover:text-gray-800 duration-500 cursor-pointer`}/>
-                        {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[5px] left-[43px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
-                    </Link>
 
                     <div className='sm:hidden' onClick={toggleMenu}>
                         <FaBars className='text-2xl text-gray-700 hover:text-gray-500 duration-300 cursor-pointer'/>

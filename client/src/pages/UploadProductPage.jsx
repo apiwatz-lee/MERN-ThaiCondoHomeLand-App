@@ -74,7 +74,7 @@ const UploadProductPage = () => {
           await axios.post(`${server}/product/upload`,formData,{
           headers: {'Content-Type': 'multipart/form-data'},})
           setIsLoading(false)
-          navigate('/product');
+          navigate('/');
           setIsUploadCompleted(true)
       } catch (error) {
           console.log(error)
@@ -103,7 +103,7 @@ const UploadProductPage = () => {
       }
       await axios.put(`${server}/product/upload/${params.id}`,data)
       setIsLoading(false)
-      navigate('/product')
+      navigate('/')
       setIsUpdatedCompleted(true)
     } catch (error) {
       console.log(error);
@@ -118,7 +118,7 @@ const UploadProductPage = () => {
       await axios.delete(`${server}/product/${params.id}`)
       setIsDeleteCompleted(true)
       setIsLoading(false)
-      navigate('/product')
+      navigate('/')
     } catch (error) {
       console.log(error)
     }

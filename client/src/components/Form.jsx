@@ -252,7 +252,7 @@ const Form = ({params}) => {
                   className='border p-3 rounded-full w-28 sm:w-56 bg-white text-[#E04132] hover:bg-gray-200 hover:text-black duration-300' 
                   type='reset' 
                   title='Cancel' 
-                  onClick={()=>navigate('/product')}/>
+                  onClick={()=>navigate('/')}/>
             <Button 
                   className='border p-3 rounded-full w-28 sm:w-56 text-white bg-[#E04132] hover:bg-orange-700 duration-300' 
                   type='button' 

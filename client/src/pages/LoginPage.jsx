@@ -12,7 +12,7 @@ const LoginPage = () => {
     return (
         <>
             <main className='bg-shopping bg-cover w-screen h-screen font-poppins'>
-                <div className='hidden lg:block absolute top-5 left-5 text-white cursor-pointer' onClick={()=>navigate('/product')}>
+                <div className='hidden lg:block absolute top-5 left-5 text-white cursor-pointer' onClick={()=>navigate('/')}>
                     <FaArrowLeftLong className='text-3xl hover:text-gray-300 duration-300'/>
                 </div>
 
