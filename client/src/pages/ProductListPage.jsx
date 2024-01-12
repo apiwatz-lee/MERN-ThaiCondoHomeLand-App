@@ -14,6 +14,7 @@ const ProductListPage = () => {
         setIsUploadCompleted,
         setName,
         setCode,
+        setFullPrice,
         setPrice,
         setDescription,
         setLink,
@@ -79,6 +80,7 @@ const ProductListPage = () => {
       setIsPaymentSuccess(false)
       setName('')
       setCode('')
+      setFullPrice('')
       setPrice('')
       setDescription('')
       setLink('')

@@ -14,6 +14,8 @@ const UploadProductPage = () => {
         setName,
         code,
         setCode,
+        fullPrice,
+        setFullPrice,
         price,
         setPrice,
         description,
@@ -62,6 +64,7 @@ const UploadProductPage = () => {
     formData.append('status',selectStatus)
     formData.append('name',name);
     formData.append('code',code);
+    formData.append('fullPrice',fullPrice.split(',').join(''));
     formData.append('price',price.split(',').join(''));
     formData.append('description',description);
     formData.append('link',link);
@@ -96,6 +99,7 @@ const UploadProductPage = () => {
         status:selectStatus,
         name:name,
         code:code,
+        fullPrice:fullPrice,
         price:price,
         description:description,
         link:link,
@@ -165,6 +169,7 @@ const UploadProductPage = () => {
     setSelectStatus('')
     setAvatars([])
     setName('')
+    setFullPrice('')
     setPrice('')
     setCode('')
     setDescription('')

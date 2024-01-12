@@ -20,6 +20,7 @@ function App() {
   //state for upload product
   const [name,setName] = useState('')
   const [code,setCode] = useState('')
+  const [fullPrice,setFullPrice] = useState('')
   const [price,setPrice] = useState('')
   const [description,setDescription] = useState('')
   const [avatars,setAvatars] = useState([])
@@ -60,6 +61,8 @@ function App() {
         setName,
         code,
         setCode,
+        fullPrice,
+        setFullPrice,
         price,
         setPrice,
         description,

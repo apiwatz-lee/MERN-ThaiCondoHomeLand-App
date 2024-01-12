@@ -65,6 +65,7 @@ productRouter.post('/upload', avatarUpload, async(req,res)=>{
             status:req.body.status,
             name:req.body.name,
             code:req.body.code,
+            fullPrice:Number(req.body.fullPrice),
             price:Number(req.body.price),
             description:req.body.description,
             link:req.body.link

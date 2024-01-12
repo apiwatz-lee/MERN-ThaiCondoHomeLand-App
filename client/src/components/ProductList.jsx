@@ -64,6 +64,8 @@ const ProductList = () => {
   const handleEdit = (id) => {
     navigate(`/product/upload/${id}`)
   }
+
+  console.log(products);
   
   return (
     <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
@@ -111,6 +113,7 @@ const ProductList = () => {
                       <p>{item.district}</p>
                     </div>
                   </div>
+                  <p className='text-end text-xs pr-2 line-through text-gray-400'>{item.fullPrice} ฿</p>
                   <p className={`text-right pb-4 pr-4 font-semibold ${item.status === 'ยังอยู่' ? 'text-cyan-600' : item.status === 'ติดจอง'? 'text-orange-600':null}`}>{item.status !== 'ปิดการขาย' && `${formatNumber(item.price)} ฿`}</p>
               </section>
               :

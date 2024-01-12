@@ -21,6 +21,8 @@ const Form = ({params}) => {
           setName,
           code,
           setCode,
+          fullPrice,
+          setFullPrice,
           price,
           setPrice,
           description,
@@ -224,7 +226,15 @@ const Form = ({params}) => {
                 placeholder='Code' 
                 value={code} 
                 onChange={(e)=>{setCode(e.target.value)}}/>
-            <label name='price' className='font-light text-left'>Price</label>
+            <label name='price' className='font-light text-left'>Full Price</label>
+            <NumericFormat
+              value={fullPrice}
+              thousandSeparator
+              className='border rounded-full p-3 pl-7 placeholder:font-light placeholder:text-gray-300 outline-none text-gray-500 font-light'
+              onChange={(e)=>{setFullPrice(e.target.value)}}
+              placeholder='2,000,000'
+            />
+            <label name='price' className='font-light text-left'>Net Price</label>
             <NumericFormat
               value={price}
               thousandSeparator
