@@ -63,7 +63,7 @@ export default function Navigator() {
    
     return (
         <>
-            <aside className={`sm:hidden fixed z-10 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-gray-800 duration-300`}>
+            <aside className={`sm:hidden fixed z-40 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-gray-800 duration-300`}>
                 <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 hover:text-gray-200 duration-1000 cursor-pointer`} onClick={toggleMenu}/>
                 <ul className='flex flex-col justify-center items-center gap-5 p-20'>
                     {mobileMenu}
@@ -105,12 +105,6 @@ export default function Navigator() {
                     <li className='text-gray-400 flex justify-center items-center gap-1 cursor-pointer'>
                         <p> {isAuthenticated ? `Hello ${name}` : `Hello Guest`} </p>
                         <span> | </span>
-                        <Link to='/product/cart' className={`sm:hidden block text-3xl text-gray-500 ${location.pathname === '/product/cart' ? ' bg-gray-100 p-3 duration-500 rounded-full':'p-3'}`}>
-                            <div className='relative'>
-                                <FiShoppingCart/>
-                                {cart.length !== 0 && <span className='absolute border bg-[#E04132] top-[-19px] left-[16px] text-white rounded-full w-5 h-5 text-center text-[12px] flex justify-center items-center'>{cart.length}</span>}
-                            </div>
-                        </Link>
                         {isAuthenticated ? 
                             <p className='hidden sm:block cursor-pointer text-orange-500 font-semibold hover:text-[#E04132] duration-500' onClick={()=>handleLogout()}>Log out</p>
                             :
