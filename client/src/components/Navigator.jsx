@@ -82,7 +82,7 @@ export default function Navigator() {
                 </ul>
             </aside>
 
-            <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 py-5 mb-5 shadow-md sticky top-0 z-50 bg-white'>
+            <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 py-5 mb-5 shadow-md sticky top-0 z-30 bg-white'>
                 <ul className='hidden sm:flex justify-center items-center gap-5 lg:p-3 h-16'>
                     {anchor?.map((item)=>{
                         return <li key={item.id}>
