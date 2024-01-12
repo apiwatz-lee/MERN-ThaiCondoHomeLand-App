@@ -249,14 +249,14 @@ const Form = ({params}) => {
              
           <div className='flex justify-center gap-5 py-5 sm:p-10'>
             <Button 
-                  className='border p-3 rounded-full w-28 sm:w-56 bg-white text-[#E04132] hover:bg-gray-200 hover:text-black duration-300' 
+                  className='border p-3 rounded-full w-28 sm:w-56 bg-white text-cyan-800 hover:bg-gray-200 hover:text-black duration-300' 
                   type='reset' 
                   title='Cancel' 
                   onClick={()=>navigate('/')}/>
             <Button 
-                  className='border p-3 rounded-full w-28 sm:w-56 text-white bg-[#E04132] hover:bg-orange-700 duration-300' 
+                  className='border p-3 rounded-full w-28 sm:w-56 text-white bg-cyan-800 hover:bg-cyan-700 duration-300' 
                   type='button' 
-                  title='Confirm' 
+                  title={params.id ? 'Update':'Post'} 
                   onClick={handleValidate}/>
           </div>
 
@@ -264,7 +264,7 @@ const Form = ({params}) => {
                         <Button 
                           type='button'
                           onClick={()=>setIsDelete(true)}
-                          className='border bg-red-800 text-white h-14 text-xl font-semibold rounded-xl mb-10 hover:bg-red-600 duration-300'
+                          className='border bg-red-700 text-white h-14 text-xl font-semibold rounded-xl mb-10 hover:bg-red-600 duration-300'
                           title = 'Delete' />
             }
          

@@ -82,7 +82,7 @@ const ProductConfirmation = ({handleSubmit,handleUpdate,handleDelete}) => {
                             <button className='p-2 rounded-xl bg-gray-200 text-black outline-none' type='button' ref={cancelRef} onClick={handleCancel}>
                                 {message.cancel}
                             </button>
-                            <button className='p-2 rounded-xl bg-orange-700 text-white' type='button' onClick={isUpdate? handleUpdate :isSubmit? handleSubmit:isDelete ? handleDelete:null} ml={3}>
+                            <button className='p-2 rounded-xl bg-cyan-700 text-white' type='button' onClick={isUpdate? handleUpdate :isSubmit? handleSubmit:isDelete ? handleDelete:null} ml={3}>
                                 {message.corect}
                             </button>
                         </AlertDialogFooter>

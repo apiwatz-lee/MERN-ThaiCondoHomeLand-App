@@ -9,6 +9,7 @@ import { FaBars,FaTimes } from "react-icons/fa";
 import { CiShoppingTag } from "react-icons/ci";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { CiLogout,CiLogin} from "react-icons/ci";
+import logo from '../assets/img/logo.png'
 
 export default function Navigator() {
 
@@ -62,8 +63,8 @@ export default function Navigator() {
   
    
     return (
-        <>
-            <aside className={`sm:hidden fixed z-40 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-gray-800 duration-300`}>
+        <div className='relative'>
+            <aside className={`sm:hidden fixed z-40 ${isOpen ? 'top-0':'top-[-100%]'} h-auto w-full bg-cyan-950 duration-300`}>
                 <FaTimes className={`${isOpen ? 'top-5':'top-[-100%]'} text-2xl text-white fixed left-5 hover:text-gray-200 duration-1000 cursor-pointer`} onClick={toggleMenu}/>
                 <ul className='flex flex-col justify-center items-center gap-5 p-20'>
                     {mobileMenu}
@@ -81,7 +82,7 @@ export default function Navigator() {
                 </ul>
             </aside>
 
-            <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 pt-5'>
+            <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 py-5 mb-5 shadow-md'>
                 <ul className='hidden sm:flex justify-center items-center gap-5 lg:p-3 h-16'>
                     {anchor?.map((item)=>{
                         return <li key={item.id}>
@@ -95,25 +96,30 @@ export default function Navigator() {
                     })}
                 </ul>
 
+                <div className='hidden sm:flex flex-col justify-center items-center gap-2 cursor-pointer' onClick={()=>navigate('/')}>
+                    <img src={logo} alt="logo" className='w-12' />
+                    <p className='tracking-widest font-medium'>ThaiCondoHomeLand</p>
+                </div>
+               
+
+
                 <ul className='relative flex justify-between sm:justify-center items-center p-3 w-full sm:w-auto'>
-
-
                     <div className='sm:hidden' onClick={toggleMenu}>
-                        <FaBars className='text-2xl text-gray-700 hover:text-gray-500 duration-300 cursor-pointer'/>
+                        <FaBars className='text-2xl text-cyan-900 hover:text-gray-500 duration-300 cursor-pointer'/>
                     </div>
 
                     <li className='text-gray-400 flex justify-center items-center gap-1 cursor-pointer'>
                         <p> {isAuthenticated ? `Hello ${name}` : `Hello Guest`} </p>
                         <span> | </span>
                         {isAuthenticated ? 
-                            <p className='hidden sm:block cursor-pointer text-orange-500 font-semibold hover:text-[#E04132] duration-500' onClick={()=>handleLogout()}>Log out</p>
+                            <p className='hidden sm:block cursor-pointer text-red-500 font-semibold hover:text-red-700 duration-500' onClick={()=>handleLogout()}>Log out</p>
                             :
-                            <p className='hidden sm:block cursor-pointer text-orange-500 font-semibold hover:text-[#E04132] duration-500' onClick={()=>navigate('/login')}>Log in</p>
+                            <p className='hidden sm:block cursor-pointer text-cyan-800 font-semibold hover:text-cyan-600 duration-500' onClick={()=>navigate('/login')}>Log in</p>
                         }
                     </li>
                 </ul>
             </nav>
-        </>
+        </div>
     )
 }
         

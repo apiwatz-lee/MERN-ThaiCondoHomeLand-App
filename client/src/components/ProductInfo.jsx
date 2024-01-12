@@ -43,16 +43,16 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
 
                 <h2 className='font-bold underline text-xl'>Live</h2>
                 <div className='w-full'>
-                  <a href={productDetail[0]?.link} className='text-blue-700'>Click to see assets in video</a>
+                  <a href={productDetail[0]?.link} className='text-blue-700'>Click to see in video</a>
                 </div>
 
                 <h2 className='font-bold underline text-xl'>Contact</h2>
-                <div className='flex gap-2 items-center justify-center xl:justify-start'>
-                  <BsFillTelephoneFill className='text-gray-600'/>:
+                <div className='flex gap-2 items-center justify-start'>
+                  <BsFillTelephoneFill className='text-gray-600 text-lg'/>
                   <p>0635954523</p>
                 </div>
-                <div className='flex gap-2 items-center justify-center xl:justify-start'>
-                  <FaLine className='text-green-700'/>:
+                <div className='flex gap-2 items-center justify-start xl:justify-start'>
+                  <FaLine className='text-green-700 text-xl'/>
                   <p>@thaicondohomeland</p>
                 </div>      
                         

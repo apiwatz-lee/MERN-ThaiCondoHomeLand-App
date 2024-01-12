@@ -103,22 +103,22 @@ const Dropzone = () => {
                 </div>
         }
     
-        <section className='flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-10'>
+        <section className='flex flex-row justify-center items-center gap-3 sm:gap-10'>
             {
             avatars[0]?.id ?
             avatars.map((file)=>{
                 return (
                 <div key={file.id} className='relative flex flex-col justify-center items-center w-32'>
-                    <img src={file.preview} alt={file.name} className='w-32 h-32 rounded-2xl object-cover'/>
-                    <button onClick={(e)=> handleRemoveWhenUpload(e,file.id)} className='absolute top-[-10px] right-[-10px] rounded-full bg-[#E04132] text-white w-8 h-8'>x</button>
+                    <img src={file.preview} alt={file.name} className='w-32 h-20 sm:h-32 rounded-2xl object-cover'/>
+                    <button onClick={(e)=> handleRemoveWhenUpload(e,file.id)} className='absolute top-[-10px] right-[-10px] rounded-full bg-cyan-600 text-white w-8 h-8'>x</button>
                 </div>)
             })
             :
             avatars.map((file)=>{
               return (
               <div key={file.publicId} className='relative flex flex-col justify-center items-center w-32'>
-                  <img src={file.url} className='w-32 h-32 rounded-2xl object-cover'/>
-                  <button onClick={(e)=> handleRemoveWhenEdit(e,file.publicId)} className='absolute top-[-10px] right-[-10px] rounded-full bg-[#E04132] text-white w-8 h-8'>x</button>
+                  <img src={file.url} className='w-32 h-20 sm:h-32 rounded-2xl object-cover'/>
+                  <button onClick={(e)=> handleRemoveWhenEdit(e,file.publicId)} className='absolute top-[-10px] right-[-10px] rounded-full bg-cyan-600 text-white w-8 h-8'>x</button>
               </div>)
           })
           }
