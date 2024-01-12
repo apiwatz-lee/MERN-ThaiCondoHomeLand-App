@@ -122,13 +122,22 @@ const ProductList = () => {
               >
                 <div className='relative'>
                   <div className='relative'>
-                    <img src={item.avatars[0].url} alt={item.name} className={`border h-[200px] rounded-t-2xl object-cover w-[300px] cursor-pointer ${item.status === 'ปิดการขาย' ? 'opacity-40':null}`} onClick={() => handleProductDetails(item._id)}/>
+                    <img  src={item.avatars[0].url} alt={item.name} 
+                          className={`border h-[200px] rounded-t-2xl object-cover w-[300px] cursor-pointer ${item.status === 'ปิดการขาย' ? 'opacity-40':null}`} 
+                          onClick={() => handleProductDetails(item._id)}/>
+                          
                     <span className='absolute top-7 left-3 flex justify-between items-center w-24'>
                       <img src={logo} alt="ThaiCondoHomeLand" className='w-8 rounded-full absolute z-20' />
-                      <p className='text-white bg-green-600 text-sm w-full text-center absolute z-10 left-3 rounded-xl h-6 flex justify-center items-center font-bold'>{item.sell}</p>
+                      <p className={`text-white text-sm w-full text-center absolute z-10 left-3 rounded-xl h-6 flex justify-center items-center font-bold 
+                      ${item.status === 'ปิดการขาย' ? 'bg-red-500 pl-3' 
+                      : item.status === 'ติดจอง'? 'bg-orange-600'
+                      :'bg-cyan-600'}`}>
+
+                        {item.status === 'ปิดการขาย' ? 'Sold out' :item.sell}
+                      </p>
                     </span>
-                    <span className='absolute bottom-2 right-2'>
-                      <p className={`text-white text-sm p-1 rounded-lg font-bold w-32 text-center ${item.status === 'ยังอยู่' ? 'bg-green-600':item.status === 'ติดจอง'? 'bg-orange-500':'bg-red-500'}`}>{`สถานะ : ${item.status}`}</p>
+                    <span className='absolute bottom-2 right-3'>
+                      <p className={`text-white text-sm p-1 rounded-lg font-bold w-32 text-center ${item.status === 'ยังอยู่' ? 'bg-cyan-600':item.status === 'ติดจอง'? 'bg-orange-600':'bg-red-500'}`}>{`สถานะ : ${item.status}`}</p>
                     </span>
                   </div>
                   <h1 className='w-full font-semibold text-sm pt-2 pl-2'>{item.name}</h1>
@@ -142,9 +151,7 @@ const ProductList = () => {
                     <p>{item.district}</p>
                   </div>
                 </div>
-                <p className={`text-right pb-4 pr-4 font-semibold text-[#348150]`}>
-                  {item.status !== 'ปิดการขาย' && `${formatNumber(item.price)} ฿`}
-                </p>
+                <p className={`text-right pb-4 pr-4 font-semibold ${item.status === 'ยังอยู่' ? 'text-cyan-600' : item.status === 'ติดจอง'? 'text-orange-600':null}`}>{item.status !== 'ปิดการขาย' && `${formatNumber(item.price)} ฿`}</p>
               </section>
         );
         })}

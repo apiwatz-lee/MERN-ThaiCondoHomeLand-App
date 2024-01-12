@@ -43,7 +43,7 @@ const ProductInfo = ({productDetail,handlePreview,preview,role}) => {
 
                 <h2 className='font-bold underline text-xl'>Live</h2>
                 <div className='w-full'>
-                  <a href={productDetail[0]?.link} className='text-blue-700'>Click to see in video</a>
+                  <a href={productDetail[0]?.link} target='_blank' className='text-blue-700'>Click to see in video</a>
                 </div>
 
                 <h2 className='font-bold underline text-xl'>Contact</h2>
