@@ -7,6 +7,7 @@ import Navigator from '../components/Navigator';
 import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
 import ImageSlider from '../components/ImageSlider';
+import Footer from '../components/Footer';
 
 const ProductListPage = () => {
 
@@ -101,6 +102,7 @@ const ProductListPage = () => {
           <Loading/>
           <Pagination/>
       </main>
+      <Footer/>
     </div>
   )
 }

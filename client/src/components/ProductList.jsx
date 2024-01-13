@@ -65,11 +65,10 @@ const ProductList = () => {
     navigate(`/product/upload/${id}`)
   }
 
-  console.log(products);
   
   return (
     <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
-
+        
         {products.map((item)=>{
             return ( 
               role === 'admin' ?
@@ -118,14 +117,15 @@ const ProductList = () => {
               </section>
               :
               <section 
-              className='w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl duration-300' 
+              className='w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl duration-300 cursor-pointer' 
               key={item._id} 
+              onClick={() => handleProductDetails(item._id)}
               >
                 <div className='relative'>
                   <div className='relative'>
                     <img  src={item.avatars[0].url} alt={item.name} 
                           className={`border h-[200px] rounded-t-2xl object-cover w-[300px] cursor-pointer ${item.status === 'ปิดการขาย' ? 'opacity-40':null}`} 
-                          onClick={() => handleProductDetails(item._id)}/>
+                          />
                           
                     <span className='absolute top-7 left-3 flex justify-between items-center w-24'>
                       <img src={logo} alt="ThaiCondoHomeLand" className='w-8 rounded-full absolute z-20' />
