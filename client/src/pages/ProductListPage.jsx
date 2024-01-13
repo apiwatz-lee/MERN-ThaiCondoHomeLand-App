@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import Navigator from '../components/Navigator';
 import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
+import ImageSlider from '../components/ImageSlider';
 
 const ProductListPage = () => {
 
@@ -92,6 +93,7 @@ const ProductListPage = () => {
   return (
     <div className='relative'>
       <Navigator/>
+      <ImageSlider/>
       <main className='font-poppins w-screen h-screen flex flex-col items-center gap-5'>
           <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>Assets list</h1>
           <SearchBar/>
