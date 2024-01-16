@@ -12,7 +12,7 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
   return (
     <>
       <div className='xl:w-[50%] my-10 p-5 w-[95%] flex flex-col-reverse xl:flex-col justify-evenly bg-gray-100 rounded-3xl shadow-2xl py-10 xl:py-0 xl:h-[70vh]'>
-        <h1 className='hidden xl:block w-full mt-5 xl:pt-0 font-bold text-xl text-center text-gray-800'>
+        <h1 className='hidden xl:block w-[95%] mt-5 xl:pt-0 font-bold text-xl text-center text-gray-800'>
           ({productDetail[0]?.sell}) {productDetail[0]?.name}
         </h1>
 
