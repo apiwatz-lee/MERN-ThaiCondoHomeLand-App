@@ -11,12 +11,12 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
 
   return (
     <>
-      <div className='xl:w-[50%] w-[95%] flex flex-col-reverse xl:flex-col justify-evenly gap-5 bg-gray-100 rounded-3xl shadow-2xl py-10 xl:py-0 xl:h-[70vh]'>
-        <h1 className='hidden xl:block w-full pt-5 xl:pt-0 font-bold text-xl xl:text-2xl text-center text-gray-800'>
+      <div className='xl:w-[50%] my-10 p-5 w-[95%] flex flex-col-reverse xl:flex-col justify-evenly bg-gray-100 rounded-3xl shadow-2xl py-10 xl:py-0 xl:h-[70vh]'>
+        <h1 className='hidden xl:block w-full mt-5 xl:pt-0 font-bold text-xl text-center text-gray-800'>
           ({productDetail[0]?.sell}) {productDetail[0]?.name}
         </h1>
 
-        <section className='w-full px-5 text-center xl:text-start flex flex-col justify-evenly items-center min-h-[350px]'>
+        <section className='w-full text-center xl:text-start flex flex-col justify-evenly items-center min-h-[350px]'>
           <div className='flex flex-col xl:flex-row gap-3 xl:gap-10'>
             <h2 className='font-bold underline xl:hidden text-xl'>Location</h2>
             <div className='flex flex-col justify-center items-start xl:hidden'>
@@ -38,7 +38,7 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
               <h2 className='font-bold underline text-xl w-full'>
                 Description
               </h2>
-              <pre className='font-poppins text-start mt-2'>
+              <pre className='font-poppins text-start'>
                 {productDetail[0]?.description}
               </pre>
             </div>
@@ -86,7 +86,7 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
           </div>
 
           <p
-            className={`text-center text-green-700 font-bold text-xl my-2 xl:text-3xl mt-5 ${
+            className={`text-center text-green-700 font-bold text-xl my-2 xl:text-2xl mt-5 ${
               productDetail[0]?.status === 'ปิดการขาย' ? 'hidden' : null
             }`}
           >
@@ -95,7 +95,7 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
           </p>
         </section>
 
-        <section className='flex flex-wrap justify-center gap-3 px-2'>
+        <section className='flex flex-wrap justify-center gap-3'>
           {preview.length !== 0
             ? productDetail[0]?.avatars?.map((item) => (
                 <img
@@ -106,7 +106,7 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
                     item.publicId === preview[0].publicId
                       ? 'opacity-100'
                       : 'opacity-20'
-                  } object-cover w-10 sm:w-20 h-18 sm:h-20  rounded-xl`}
+                  } object-cover w-10 sm:w-12 h-14 sm:h-18  rounded-xl`}
                   onMouseOver={() => handlePreview(item.publicId)}
                 />
               ))
@@ -119,7 +119,7 @@ const ProductInfo = ({ productDetail, handlePreview, preview, role }) => {
                     item.publicId === productDetail[0].avatars[0].publicId
                       ? 'opacity-100'
                       : 'opacity-20'
-                  } object-cover w-10 sm:w-20 h-18 sm:h-20  rounded-xl`}
+                  } object-cover w-10 sm:w-12 h-14 sm:h-18  rounded-xl`}
                   onMouseOver={() => handlePreview(item.publicId)}
                 />
               ))}
