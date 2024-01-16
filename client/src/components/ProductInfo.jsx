@@ -1,6 +1,4 @@
 import React from 'react';
-import { FaLocationDot, FaHouse, FaTiktok } from 'react-icons/fa6';
-import { BiSolidVideos } from 'react-icons/bi';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { FaLine } from 'react-icons/fa';
 

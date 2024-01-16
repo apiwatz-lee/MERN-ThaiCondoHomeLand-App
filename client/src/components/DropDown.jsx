@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const DropDown = ({title,id,option,select,setSelect}) => {
+const DropDown = ({ title, id, option, select, setSelect }) => {
   return (
     <div className='flex flex-col justify-center items-center gap-2'>
       <label htmlFor={id}>{title}</label>
@@ -21,10 +21,9 @@ const DropDown = ({title,id,option,select,setSelect}) => {
             </option>
           );
         })}
-
       </select>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
-export default DropDown
+export default DropDown;

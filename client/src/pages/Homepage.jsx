@@ -1,13 +1,12 @@
-import React from 'react'
-import CTA from '../components/CTA'
+import React from 'react';
+import CTA from '../components/CTA';
 
 const Homepage = () => {
-
   return (
     <>
-      <CTA/>
+      <CTA />
     </>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;

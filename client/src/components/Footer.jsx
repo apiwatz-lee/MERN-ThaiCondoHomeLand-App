@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 import { socialMedia } from '../data/SocialMedia';
 import { Link } from 'react-router-dom';
-import { AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail } from 'react-icons/ai';
 
 const Footer = () => {
-
-  const socials = socialMedia.map((item)=>{
+  const socials = socialMedia.map((item) => {
     return (
-        <Link to={item.url} target='_blank' key={item.id}>
-            {item.icon}
-        </Link>             
-    )
-    })
-
+      <Link to={item.url} target='_blank' key={item.id}>
+        {item.icon}
+      </Link>
+    );
+  });
 
   return (
-    <footer className={`flex flex-col items-center justify-center lg:justify-around gap-10 h-52 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36`}>
+    <footer
+      className={`flex flex-col items-center justify-center lg:justify-around gap-10 h-52 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36`}
+    >
       <section className='flex justify-center items-center gap-2 w-72'>
-        <AiOutlineMail/>
+        <AiOutlineMail />
         <p>thaicondohomeland@gmail.com</p>
       </section>
       <section className='w-96 flex justify-center items-center gap-2'>
@@ -28,7 +28,7 @@ const Footer = () => {
         {socials}
       </section>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
