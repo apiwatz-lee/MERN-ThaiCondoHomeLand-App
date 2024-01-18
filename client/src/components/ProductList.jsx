@@ -70,7 +70,7 @@ const ProductList = () => {
             <div className='relative'>
               <button
                 onClick={() => handleEdit(item._id)}
-                className='absolute right-3 top-4 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-110 duration-300 z-30'
+                className='absolute right-3 top-4 text-gray-200 bg-gray-600 rounded-full p-1 cursor-pointer hover:scale-110 duration-300 z-20'
               >
                 <MdEdit />
               </button>
