@@ -1,9 +1,8 @@
 import React from 'react';
-import { useContext } from 'react';
-import { AppContext } from '../App';
+import { useApp } from '../context/AppContext';
 
 const ProductCartList = () => {
-  const { cart, setCart } = useContext(AppContext);
+  const { cart, setCart } = useApp();
 
   const handleAddQuantity = (id) => {
     const newCart = [...cart];

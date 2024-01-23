@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { useContext } from 'react';
-import { AppContext } from '../App';
 import { jwtDecode } from 'jwt-decode';
+import { useApp } from '../context/AppContext';
 
 const PayButton = () => {
-  const { cart, setIsPaymentSuccess } = useContext(AppContext);
+  const { cart, setIsPaymentSuccess } = useApp();
   const server = import.meta.env.VITE_API;
   const token = localStorage.getItem('token');
   const deToken = jwtDecode(token);

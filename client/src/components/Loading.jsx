@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -7,10 +7,11 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 import { AppContext } from '../App';
+import { useApp } from '../context/AppContext';
 
 const Loading = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isLoading } = useContext(AppContext);
+  const { isLoading } = useApp();
 
   useEffect(() => {
     if (isLoading) {

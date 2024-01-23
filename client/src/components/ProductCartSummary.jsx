@@ -1,12 +1,11 @@
 import React from 'react';
-import { useContext } from 'react';
-import { AppContext } from '../App';
 import { useEffect } from 'react';
 import PayButton from './PayButton';
+import { useApp } from '../context/AppContext';
 
 const ProductCartSummary = () => {
   const { cart, totalQuantity, setTotalQuantity, totalAmount, setTotalAmount } =
-    useContext(AppContext);
+    useApp();
 
   const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');

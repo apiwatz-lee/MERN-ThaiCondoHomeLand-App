@@ -2,8 +2,6 @@ import React from 'react';
 import Dropzone from './Dropzone';
 import Input from './Input';
 import Button from './Button';
-import { useContext } from 'react';
-import { AppContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import Textarea from './Textarea';
@@ -12,6 +10,7 @@ import DropDown from './DropDown';
 import { sellOption, assetOption, statusOption } from '../data/Option';
 import axios from 'axios';
 import { NumericFormat } from 'react-number-format';
+import { useApp } from '../context/AppContext';
 
 const Form = ({ params }) => {
   const server = import.meta.env.VITE_API;
@@ -51,7 +50,7 @@ const Form = ({ params }) => {
     setIsUpdate,
     setIsSubmit,
     setIsDelete,
-  } = useContext(AppContext);
+  } = useApp();
 
   const navigate = useNavigate();
   const toast = useToast();

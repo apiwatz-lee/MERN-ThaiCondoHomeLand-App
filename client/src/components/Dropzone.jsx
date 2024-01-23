@@ -1,13 +1,13 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { AppContext } from '../App';
 import { v4 as uuidv4 } from 'uuid';
 import UploadIcon from './UploadIcon';
 import { useToast } from '@chakra-ui/react';
 import { useEffect } from 'react';
+import { useApp } from '../context/AppContext';
 
 const Dropzone = () => {
-  const { avatars, setAvatars } = useContext(AppContext);
+  const { avatars, setAvatars } = useApp();
   const toast = useToast();
 
   const onDrop = useCallback((acceptedFiles) => {

@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductConfirmation from '../components/ProductConfirmation';
 import Loading from '../components/Loading';
-import { AppContext } from '../App';
 import Form from '../components/Form';
 import Navigator from '../components/Navigator';
 import { useEffect } from 'react';
+import { useApp } from '../context/AppContext';
 
 const UploadProductPage = () => {
   const {
@@ -44,7 +44,7 @@ const UploadProductPage = () => {
     setIsDelete,
     setIsUpdatedCompleted,
     setIsDeleteCompleted,
-  } = useContext(AppContext);
+  } = useApp();
 
   const server = import.meta.env.VITE_API;
   const navigate = useNavigate();

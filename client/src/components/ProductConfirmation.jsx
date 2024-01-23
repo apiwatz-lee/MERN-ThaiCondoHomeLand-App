@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 import {
   AlertDialog,
@@ -9,7 +9,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
 } from '@chakra-ui/react';
-import { AppContext } from '../App';
+import { useApp } from '../context/AppContext';
 
 const ProductConfirmation = ({ handleSubmit, handleUpdate, handleDelete }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -20,7 +20,7 @@ const ProductConfirmation = ({ handleSubmit, handleUpdate, handleDelete }) => {
     setIsUpdate,
     isDelete,
     setIsDelete,
-  } = useContext(AppContext);
+  } = useApp();
   const cancelRef = React.useRef();
   const [message, setMessage] = useState({});
 

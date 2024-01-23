@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../App';
+import React from 'react';
+import { useApp } from '../context/AppContext';
 
 const Pagination = () => {
-  const { page, setPage, totalPage } = useContext(AppContext);
+  const { page, setPage, totalPage } = useApp();
 
   const handlePrevious = () => {
     setPage((prev) => (prev !== 1 ? prev - 1 : prev));
