@@ -1,4 +1,4 @@
-import { FaTiktok, FaGithub, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaTiktok, FaInstagram, FaFacebook, FaLine } from 'react-icons/fa';
 
 export const socialMedia = [
   {
@@ -7,7 +7,12 @@ export const socialMedia = [
     url: 'https://www.tiktok.com/@thaicondohomeland',
     icon: <FaTiktok />,
   },
-  // {id:2,name:'github',url:'https://github.com/apiwatz-lee',icon:<FaGithub/>},
+  {
+    id: 2,
+    name: 'link',
+    url: 'https://lin.ee/US48sck',
+    icon: <FaLine />,
+  },
   {
     id: 3,
     name: 'instagram',

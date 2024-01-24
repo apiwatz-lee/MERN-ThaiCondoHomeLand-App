@@ -8,9 +8,9 @@ const ImageSlider = () => {
     <section className='slide-wrapper'>
       <div className='slider'>
         <div className='slide-track'>
-          {customers.map((item) => {
+          {customers.map((item, index) => {
             return (
-              <div className='slide'>
+              <div className='slide' key={index}>
                 <img
                   src={item.image}
                   key={item.id}
