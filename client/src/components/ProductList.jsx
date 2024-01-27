@@ -10,8 +10,8 @@ import logo from '../assets/img/logo.png';
 import { useApp } from '../context/AppContext';
 
 const ProductList = () => {
-  const { keyword, setIsLoading, page, setTotalPage } = useApp();
-  const [products, setProducts] = useState([]);
+  const { keyword, setIsLoading, page, setTotalPage, products, setProducts } =
+    useApp();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const server = import.meta.env.VITE_API;
@@ -60,7 +60,7 @@ const ProductList = () => {
 
   return (
     <section className='pb-10 pt-5 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 2xl:gap-x-5 2xl-y-7 2xl:w-[1500px] gap-x-3 gap-y-5 xl:gap-x-5 xl:gap-y-7 justify-items-center'>
-      {products.map((item) => {
+      {products?.map((item) => {
         return role === 'admin' ? (
           <section
             className='w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl duration-300'

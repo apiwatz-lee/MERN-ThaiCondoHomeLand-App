@@ -17,12 +17,50 @@ productRouter.get('/', async (req, res) => {
     const PAGE_SIZE = 24;
     const page = req.query.page;
     const skip = PAGE_SIZE * (page - 1);
-    const keyword = req.query.keyword;
-    if (keyword) {
-      query.$or = [
-        { name: new RegExp(`${keyword}`, 'i') },
-        { code: new RegExp(`${keyword}`, 'i') },
-      ];
+
+    if (req.query) {
+      const { sell, asset, province, district, subDistrict, status, keyword } =
+        req.query;
+
+      if (keyword) {
+        query.$or = [
+          { sell: new RegExp(`${keyword}`, 'i') },
+          { asset: new RegExp(`${keyword}`, 'i') },
+          { province: new RegExp(`${keyword}`, 'i') },
+          { district: new RegExp(`${keyword}`, 'i') },
+          { subDistrict: new RegExp(`${keyword}`, 'i') },
+          { status: new RegExp(`${keyword}`, 'i') },
+          { name: new RegExp(`${keyword}`, 'i') },
+          { code: new RegExp(`${keyword}`, 'i') },
+          { price: new RegExp(`${keyword}`, 'i') },
+          { description: new RegExp(`${keyword}`, 'i') },
+        ];
+      }
+
+      if (sell) {
+        query.sell = sell;
+      }
+
+      if (asset) {
+        query.asset = asset;
+      }
+
+      if (province) {
+        query.province = province;
+      }
+
+      if (district) {
+        query.district = district;
+      }
+
+      if (subDistrict) {
+        query.subDistrict = subDistrict;
+      }
+
+      if (status) {
+        query.status = status;
+      }
+
       const collection = db.collection('products');
       const products = await collection.find(query).limit(24).toArray();
 

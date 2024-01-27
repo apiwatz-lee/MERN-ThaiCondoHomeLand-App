@@ -6,7 +6,6 @@ import {
   useDisclosure,
   Spinner,
 } from '@chakra-ui/react';
-import { AppContext } from '../App';
 import { useApp } from '../context/AppContext';
 
 const Loading = () => {

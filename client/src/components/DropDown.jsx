@@ -1,9 +1,11 @@
 import React from 'react';
 
-const DropDown = ({ title, id, option, select, setSelect }) => {
+const DropDown = ({ title, id, option, select, setSelect, titleClass }) => {
   return (
     <div className='flex flex-col justify-center items-center gap-2'>
-      <label htmlFor={id}>{title}</label>
+      <label htmlFor={id} className={titleClass}>
+        {title}
+      </label>
       <select
         name={id}
         id={id}

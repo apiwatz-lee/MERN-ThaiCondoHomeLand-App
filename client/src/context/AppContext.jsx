@@ -10,6 +10,7 @@ const AppProvider = ({ children }) => {
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [avatars, setAvatars] = useState([]);
+  const [products, setProducts] = useState([]);
   const [fetchProvince, setFetchProvince] = useState([]);
   const [district, setDistrict] = useState([]);
   const [subDistrict, setSubDistrict] = useState([]);
@@ -41,6 +42,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        products,
+        setProducts,
         name,
         setName,
         code,

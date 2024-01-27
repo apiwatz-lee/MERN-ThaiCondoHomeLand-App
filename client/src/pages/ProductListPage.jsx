@@ -8,6 +8,7 @@ import Pagination from '../components/Pagination';
 import ImageSlider from '../components/ImageSlider';
 import Footer from '../components/Footer';
 import { useApp } from '../context/AppContext';
+import FilterZone from '../components/FilterZone';
 const ProductListPage = () => {
   const {
     isUploadCompleted,
@@ -96,6 +97,7 @@ const ProductListPage = () => {
           Assets list
         </h1>
         <SearchBar />
+        <FilterZone />
         <ProductList />
         <Loading />
         <Pagination />
