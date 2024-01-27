@@ -7,7 +7,7 @@ import { sellOption, assetOption, statusOption } from '../data/Option';
 import axios from 'axios';
 
 const FilterZone = () => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const { isFilterOpen, setIsFilterOpen } = useApp();
   const {
     selectSellType,
     setSelectSellType,
@@ -178,18 +178,18 @@ const FilterZone = () => {
               />
             </div>
 
-            <div className='text-white p-2 rounded-xl flex justify-center items-center gap-5'>
-              <button
-                onClick={() => handleFilterAsset()}
-                className='border p-2 rounded-xl w-32 hover:bg-slate-50 hover:text-black duration-300 '
-              >
-                Filter
-              </button>
+            <div className='text-white p-2 rounded-xl flex justify-center items-center gap-5 w-full'>
               <button
                 onClick={() => setIsFilterOpen(false)}
-                className='border p-2 rounded-xl w-32 hover:bg-slate-50 hover:text-black duration-300 '
+                className='text-gray-300 p-2 rounded-xl w-32 hover:bg-slate-50 hover:text-black duration-300 '
               >
-                Close
+                Cancel
+              </button>
+              <button
+                onClick={() => handleFilterAsset()}
+                className='border p-2 rounded-xl w-32 bg-slate-800 hover:bg-slate-50 hover:text-black duration-300 '
+              >
+                Filter
               </button>
             </div>
           </div>

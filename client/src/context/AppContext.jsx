@@ -39,6 +39,8 @@ const AppProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -106,6 +108,8 @@ const AppProvider = ({ children }) => {
         setTotalPage,
         isPaymentSuccess,
         setIsPaymentSuccess,
+        isFilterOpen,
+        setIsFilterOpen,
       }}
     >
       {children}
