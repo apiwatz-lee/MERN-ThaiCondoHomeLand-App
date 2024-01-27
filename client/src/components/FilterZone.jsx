@@ -70,7 +70,6 @@ const FilterZone = () => {
 
   const handleFilterAsset = async () => {
     try {
-      console.log('filter asset');
       const params = new URLSearchParams();
       params.append('sell', selectSellType);
       params.append('asset', selectAssetType);
@@ -80,13 +79,22 @@ const FilterZone = () => {
       params.append('status', selectStatus);
       setIsLoading(true);
       const filter = await axios.get(`${server}/product?${params.toString()}`);
-      setIsFilterOpen(false);
-      setProducts(filter.data.data);
       setIsLoading(false);
-      console.log(filter);
+      setIsFilterOpen(false);
+      handleResetValue();
+      setProducts(filter.data.data);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleResetValue = () => {
+    setSelectSellType('');
+    setSelectAssetType('');
+    setSelectProvince('');
+    setSelectDistrict('');
+    setSelectSubDistrict('');
+    setSelectStatus('');
   };
 
   useEffect(() => {
