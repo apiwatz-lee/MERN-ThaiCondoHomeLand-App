@@ -10,7 +10,7 @@ const SearchBar = () => {
       <input
         type='text'
         className='border w-[90vw] h-14 rounded-full pl-14 outline-none placeholder:text-gray-400 placeholder:font-light text-gray-500'
-        placeholder='Name, Catalogue, Code'
+        placeholder='Search assets by your keywords'
         value={keyword}
         onChange={(e) => {
           setKeyword(e.target.value);

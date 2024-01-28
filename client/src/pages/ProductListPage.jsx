@@ -26,6 +26,7 @@ const ProductListPage = () => {
     setIsDeleteCompleted,
     isPaymentSuccess,
     setIsPaymentSuccess,
+    products,
   } = useApp();
 
   const toast = useToast();
@@ -87,6 +88,8 @@ const ProductListPage = () => {
     setLink('');
     setAvatars([]);
   }, []);
+
+  console.log(products);
 
   return (
     <div className='relative'>
