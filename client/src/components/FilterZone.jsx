@@ -123,8 +123,14 @@ const FilterZone = () => {
       </section>
 
       {isFilterOpen && (
-        <section className='fixed backdrop-blur-[5px] bg-black/80 w-full h-screen top-0 z-50 flex justify-center items-center'>
-          <div className='w-[80%] h-[40%] rounded-xl bg-slate-800 flex flex-col justify-between items-center p-8 shadow-xl duration-500'>
+        <section
+          className='fixed backdrop-blur-[5px] bg-black/80 w-screen h-screen top-0 z-50 flex justify-center items-center'
+          onClick={() => setIsFilterOpen(false)}
+        >
+          <div
+            className='xl:w-[80%] xl:h-[40%] h-[80%] xl:min-w-[1240px] rounded-xl bg-slate-800 flex flex-col justify-between items-center p-8 shadow-xl duration-500'
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className='flex justify-between items-center w-48 '>
               <img src={logo} className='w-12 object-cover' />
               <h1 className='text-xl font-semibold text-white'>
@@ -132,7 +138,7 @@ const FilterZone = () => {
               </h1>
             </div>
 
-            <div className='flex gap-10'>
+            <div className='flex gap-10 flex-col xl:flex-row'>
               <DropDown
                 title='Sell Type'
                 id='sell_type'
