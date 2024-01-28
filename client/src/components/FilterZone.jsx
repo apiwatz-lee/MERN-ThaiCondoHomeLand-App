@@ -128,7 +128,7 @@ const FilterZone = () => {
           onClick={() => setIsFilterOpen(false)}
         >
           <div
-            className='xl:w-[80%] xl:h-[40%] h-[80%] xl:min-w-[1240px] rounded-xl bg-slate-800 flex flex-col justify-between items-center p-8 shadow-xl duration-500'
+            className='xl:w-[80%] xl:h-[40%] xl:min-w-[1240px] min-w-[280px] rounded-xl bg-slate-800 flex flex-col justify-between items-center p-8 shadow-xl duration-500 gap-16'
             onClick={(e) => e.stopPropagation()}
           >
             <div className='flex justify-between items-center w-48 '>
