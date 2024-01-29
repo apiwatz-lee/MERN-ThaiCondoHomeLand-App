@@ -106,7 +106,7 @@ export default function Navigator() {
         </ul>
       </aside>
 
-      <nav className='flex justify-between lg:text-base items-center px-10 sm:px-20 py-5 mb-5 shadow-md sticky top-0 z-30 bg-white'>
+      <nav className='flex justify-between items-center lg:text-base px-10 sm:px-20 py-5 mb-5 shadow-md sticky top-0 z-30 bg-white'>
         <ul className='hidden sm:flex justify-center items-center gap-5 lg:p-3 h-16'>
           {anchor?.map((item) => {
             return (
@@ -132,7 +132,9 @@ export default function Navigator() {
           onClick={() => navigate('/')}
         >
           <img src={logo} alt='logo' className='w-12' />
-          <p className='tracking-widest font-medium'>ThaiCondoHomeLand</p>
+          <p className='tracking-widest font-medium hidden sm:block'>
+            ThaiCondoHomeLand
+          </p>
         </div>
 
         <ul className='relative flex justify-between sm:justify-center items-center p-3 w-full sm:w-auto'>
