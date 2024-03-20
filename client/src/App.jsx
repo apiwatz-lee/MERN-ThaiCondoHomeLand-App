@@ -1,10 +1,8 @@
-import { useState, createContext } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import ProductListPage from './pages/ProductListPage';
 import UploadProductPage from './pages/UploadProductPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
-import { ChakraProvider } from '@chakra-ui/react';
 import ProductCartPage from './pages/ProductCartPage';
 import Homepage from './pages/Homepage';
 import PageNotFoud from './pages/PageNotFoud';
@@ -12,7 +10,6 @@ import LoginPage from './pages/LoginPage';
 import { useAuth } from './context/Authentication';
 import RegisterPage from './pages/RegisterPage';
 import CheckoutSuccess from './pages/CheckoutSuccess';
-import { AppProvider } from './context/AppContext';
 import Navigator from './components/Navigator';
 
 function App() {

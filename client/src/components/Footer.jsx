@@ -16,7 +16,7 @@ const Footer = () => {
     <footer
       className={`flex flex-col items-center justify-center lg:justify-between gap-10 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36`}
     >
-      <section className='flex justify-center items-center gap-2 w-72'>
+      <section className='flex justify-center items-center gap-2'>
         <AiOutlineMail />
         <p>thaicondohomeland@gmail.com</p>
       </section>
@@ -24,7 +24,7 @@ const Footer = () => {
         <span> &copy;</span>
         <p>Copyright 2024 | ThaiCondoHomeLand</p>
       </section>
-      <section className='flex justify-center items-center text-2xl gap-5 w-72'>
+      <section className='flex justify-center items-center text-2xl gap-5'>
         {socials}
       </section>
     </footer>

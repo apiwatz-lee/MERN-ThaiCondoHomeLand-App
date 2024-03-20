@@ -197,11 +197,11 @@ const UploadProductPage = () => {
   return (
     <>
       {/* <Navigator /> */}
-      <main className='font-poppins w-screen flex flex-col items-center gap-5'>
-        <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>
+      <main className='font-poppins flex flex-col items-center gap-5 container mx-auto'>
+        <h1 className='text-3xl font-medium pt-5 text-center sm:text-left w-full'>
           Upload Product
         </h1>
-        <section className='flex flex-col justify-center items-center w-[75%]'>
+        <section className='flex flex-col justify-center items-center w-[90%]'>
           <Form params={params} />
           <ProductConfirmation
             handleSubmit={handleSubmit}

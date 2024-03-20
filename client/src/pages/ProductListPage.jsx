@@ -90,11 +90,11 @@ const ProductListPage = () => {
   }, []);
 
   return (
-    <div className='relative container mx-auto'>
+    <main className='relative container mx-auto'>
       {/* <Navigator /> */}
       <ImageSlider />
-      <main className='font-poppins flex flex-col items-center gap-5'>
-        <h1 className='text-3xl w-full font-medium pt-5 text-center sm:text-left'>
+      <div className='font-poppins flex flex-col items-center gap-5'>
+        <h1 className='w-full text-3xl font-medium pt-5 text-center sm:text-left'>
           Assets list
         </h1>
         <SearchBar />
@@ -102,9 +102,9 @@ const ProductListPage = () => {
         <ProductList />
         <Loading />
         <Pagination />
-      </main>
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 };
 

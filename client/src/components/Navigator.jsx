@@ -77,7 +77,7 @@ export default function Navigator() {
         setShow(true);
       }
 
-      // setLastScrollY(window.scrollY);
+      setLastScrollY(window.scrollY);
     }
   };
 
