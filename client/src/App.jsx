@@ -13,12 +13,14 @@ import { useAuth } from './context/Authentication';
 import RegisterPage from './pages/RegisterPage';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import { AppProvider } from './context/AppContext';
+import Navigator from './components/Navigator';
 
 function App() {
   const { isAuthenticated } = useAuth();
 
   return (
     <>
+      <Navigator />
       <Routes>
         {isAuthenticated ? (
           <>

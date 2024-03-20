@@ -128,7 +128,8 @@ const ProductList = () => {
               </div>
             </div>
             <p className='text-end text-xs pr-2 line-through text-gray-400'>
-              {item.fullPrice} ฿
+              {item.status !== 'ปิดการขาย' &&
+                `${formatNumber(item.fullPrice)}฿`}
             </p>
             <p
               className={`text-right pb-4 pr-4 font-semibold ${
@@ -139,7 +140,9 @@ const ProductList = () => {
                   : null
               }`}
             >
-              {item.status !== 'ปิดการขาย' && `${formatNumber(item.price)} ฿`}
+              {item.status !== 'ปิดการขาย' &&
+                item.price &&
+                `${formatNumber(item.price)} ฿`}
             </p>
           </section>
         ) : (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/Authentication';
 import { jwtDecode } from 'jwt-decode';
@@ -14,6 +14,8 @@ export default function Navigator() {
   const { cart, setCart, setKeyword } = useApp();
   const { logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   let anchor;
   let name;
@@ -67,6 +69,28 @@ export default function Navigator() {
     logout();
   };
 
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+
+      // setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
   return (
     <>
       <aside
@@ -106,7 +130,11 @@ export default function Navigator() {
         </ul>
       </aside>
 
-      <nav className='flex justify-between items-center lg:text-base px-10 sm:px-20 py-5 mb-5 shadow-md sticky top-0 z-30 bg-white'>
+      <nav
+        className={`container mx-auto flex justify-between items-center lg:text-base py-5 mb-5 sticky top-0 z-30 bg-white transition-transform duration-500 transform ${
+          show ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
         <ul className='hidden sm:flex justify-center items-center gap-5 lg:p-3 h-16'>
           {anchor?.map((item) => {
             return (

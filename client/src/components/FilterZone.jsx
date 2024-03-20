@@ -112,7 +112,7 @@ const FilterZone = () => {
 
   return (
     <>
-      <section className='w-[90%] px-5 flex'>
+      <section className='w-full flex'>
         <div
           className='flex justify-center items-center gap-2 rounded-xl border p-3 px-4 hover:bg-gray-200 duration-300 cursor-pointer'
           onClick={() => setIsFilterOpen(!isFilterOpen)}

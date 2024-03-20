@@ -6,10 +6,10 @@ const SearchBar = () => {
   const { keyword, setKeyword } = useApp();
 
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       <input
         type='text'
-        className='border w-[90vw] h-14 rounded-full pl-14 outline-none placeholder:text-gray-400 placeholder:font-light text-gray-500'
+        className='border h-14 rounded-full w-full pl-14 outline-none placeholder:text-gray-400 placeholder:font-light text-gray-500'
         placeholder='Search assets by your keywords'
         value={keyword}
         onChange={(e) => {

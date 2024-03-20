@@ -90,11 +90,11 @@ const ProductListPage = () => {
   }, []);
 
   return (
-    <div className='relative'>
-      <Navigator />
+    <div className='relative container mx-auto'>
+      {/* <Navigator /> */}
       <ImageSlider />
-      <main className='font-poppins w-screen flex flex-col items-center gap-5'>
-        <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center sm:text-left'>
+      <main className='font-poppins flex flex-col items-center gap-5'>
+        <h1 className='text-3xl w-full font-medium pt-5 text-center sm:text-left'>
           Assets list
         </h1>
         <SearchBar />
