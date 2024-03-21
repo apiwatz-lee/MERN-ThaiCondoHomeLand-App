@@ -118,7 +118,7 @@ const FilterZone = () => {
           onClick={() => setIsFilterOpen(!isFilterOpen)}
         >
           <IoFilter />
-          Filter Assets
+          Filters
         </div>
       </section>
 
