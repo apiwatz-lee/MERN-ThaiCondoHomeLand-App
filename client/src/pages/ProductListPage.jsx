@@ -90,7 +90,7 @@ const ProductListPage = () => {
   }, []);
 
   return (
-    <main className='relative container mx-auto'>
+    <main className='relative'>
       {/* <Navigator /> */}
       <ImageSlider />
       <div className='font-poppins flex flex-col items-center gap-5'>

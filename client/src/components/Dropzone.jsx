@@ -61,7 +61,6 @@ const Dropzone = () => {
 
   const handleRemoveWhenEdit = (e, id) => {
     e.preventDefault();
-    console.log(id);
     const copyAvatar = [...avatars];
     const updateAvatars = copyAvatar.filter((avatar) => avatar.publicId !== id);
     setAvatars(updateAvatars);

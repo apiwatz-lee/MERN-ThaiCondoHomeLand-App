@@ -7,7 +7,7 @@ import cloudinary from 'cloudinary';
 import productRouter from './router/product.js';
 import authRouter from './router/auth.js';
 import stripeRouter from './router/stripe.js';
-import axios from 'axios'
+import axios from 'axios';
 
 async function init() {
   dotenv.config();
@@ -33,16 +33,17 @@ async function init() {
   app.use('/product', productRouter);
   app.use('/auth', authRouter);
   app.use('/stripe', stripeRouter);
-  app.use('/province',async(req,res)=>{
+  app.use('/province', async (req, res) => {
     try {
-      const url = 'https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json'
-      const result = await axios.get(url)
-      const data = result.data
-      return res.status(200).json({data:data})
+      const url =
+        'https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json';
+      const result = await axios.get(url);
+      const data = result.data;
+      return res.status(200).json({ data: data });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  })
+  });
 
   app.get('/', (req, res) => {
     res.send('test');

@@ -16,7 +16,7 @@ function App() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <>
+    <div className='container mx-auto'>
       <Navigator />
       <Routes>
         {isAuthenticated ? (
@@ -49,7 +49,7 @@ function App() {
           </>
         )}
       </Routes>
-    </>
+    </div>
   );
 }
 

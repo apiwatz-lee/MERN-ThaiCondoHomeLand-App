@@ -131,7 +131,7 @@ export default function Navigator() {
       </aside>
 
       <nav
-        className={`container mx-auto flex justify-between items-center lg:text-base py-5 mb-5 sticky top-0 z-30 bg-white transition-transform duration-500 transform ${
+        className={` flex justify-between items-center lg:text-base py-5 mb-5 sticky top-0 z-30 bg-white transition-transform duration-500 transform ${
           show ? 'translate-y-0' : '-translate-y-full'
         }`}
       >

@@ -31,11 +31,13 @@ const ProductDetails = () => {
     setPreview(previewImg);
   };
 
+  console.log({ product: productDetail });
+
   return (
     <>
       {/* <Navigator /> */}
-      <main className='font-poppins w-screen flex flex-col items-center gap-5'>
-        <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center xl:text-start'>
+      <section className='font-poppins w-full flex flex-col items-center gap-5'>
+        {/* <h1 className='text-3xl font-medium pt-5 text-center xl:text-start'>
           Asset Details
         </h1>
 
@@ -47,8 +49,13 @@ const ProductDetails = () => {
             handlePreview={handlePreview}
             preview={preview}
           />
-        </section>
-      </main>
+        </section> */}
+        <div className='grid grid-cols-2 gap-10 border w-full h-[500px]'>
+          <div className={`border row-span-2`}>pic1</div>
+          <div className='border'>pic2</div>
+          <div className='border'>pic3</div>
+        </div>
+      </section>
     </>
   );
 };
