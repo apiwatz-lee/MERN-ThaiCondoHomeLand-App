@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCartList from '../components/ProductCartList';
 import ProductCartSummary from '../components/ProductCartSummary';
-import Navigator from '../components/Navigator';
 import { CiShoppingCart } from 'react-icons/ci';
 import { useApp } from '../context/AppContext';
 
@@ -10,8 +9,7 @@ const ProductCartPage = () => {
 
   return (
     <>
-      {/* <Navigator /> */}
-      <main className='font-poppins w-screen flex flex-col items-center gap-5'>
+      <div className='font-poppins w-screen flex flex-col items-center gap-5'>
         <h1 className='text-3xl font-medium w-[90vw] pt-5 text-center lg:text-left'>
           Product Cart
         </h1>
@@ -29,7 +27,7 @@ const ProductCartPage = () => {
             <ProductCartSummary />
           </div>
         )}
-      </main>
+      </div>
     </>
   );
 };

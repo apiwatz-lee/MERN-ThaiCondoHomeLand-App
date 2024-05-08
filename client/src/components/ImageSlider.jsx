@@ -1,4 +1,3 @@
-import React from 'react';
 import { customers } from '../data/Customers';
 import '../App.css';
 import '../css/ImageSlider.css';

@@ -8,7 +8,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <main className='bg-shopping bg-cover w-screen h-screen font-poppins'>
+      <div className=' font-poppins bg-shopping bg-cover'>
         <div
           className='hidden lg:block absolute top-5 left-5 text-white cursor-pointer'
           onClick={() => navigate('/')}
@@ -17,7 +17,7 @@ const LoginPage = () => {
         </div>
 
         <LoginForm />
-      </main>
+      </div>
     </>
   );
 };

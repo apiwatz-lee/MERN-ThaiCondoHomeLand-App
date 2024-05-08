@@ -1,4 +1,3 @@
-import React from 'react';
 import { socialMedia } from '../data/SocialMedia';
 import { Link } from 'react-router-dom';
 import { AiOutlineMail } from 'react-icons/ai';
@@ -14,7 +13,7 @@ const Footer = () => {
 
   return (
     <footer
-      className={`flex flex-col items-center justify-center lg:justify-between gap-10 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36`}
+      className={`flex flex-col items-center justify-center lg:justify-between gap-10 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36 bg-neutral-100 px-28`}
     >
       <section className='flex justify-center items-center gap-2'>
         <AiOutlineMail />

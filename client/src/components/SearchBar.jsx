@@ -1,4 +1,3 @@
-import React from 'react';
 import { PiMagnifyingGlassThin } from 'react-icons/pi';
 import { useApp } from '../context/AppContext';
 

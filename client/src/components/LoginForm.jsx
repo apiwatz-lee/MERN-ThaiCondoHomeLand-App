@@ -22,7 +22,7 @@ const LoginForm = () => {
     <section className='w-full h-full flex flex-col justify-center items-center'>
       <form
         onSubmit={handleLogin}
-        className='p-10 w-[280px] sm:w-[400px] h-[600px] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-gray-900 bg-opacity-90 shadow-2xl'
+        className='p-10 w-[30%] h-[600px] rounded-3xl flex flex-col justify-center items-center gap-10 backdrop-opacity-5 bg-gray-900 bg-opacity-90 shadow-2xl'
       >
         <h1 className='text-gray-100 text-center text-2xl sm:text-3xl font-bold'>
           Account Login

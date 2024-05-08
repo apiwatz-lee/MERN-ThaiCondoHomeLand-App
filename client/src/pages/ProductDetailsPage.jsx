@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import PreviewImage from '../components/PreviewImage';
 import ProductInfo from '../components/ProductInfo';
-import Navigator from '../components/Navigator';
 
 const ProductDetails = () => {
   const [productDetail, setProductDetail] = useState([]);
@@ -35,8 +34,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      {/* <Navigator /> */}
-      <section className='font-poppins w-full flex flex-col items-center gap-5'>
+      <div className='font-poppins w-full flex flex-col items-center gap-5'>
         {/* <h1 className='text-3xl font-medium pt-5 text-center xl:text-start'>
           Asset Details
         </h1>
@@ -50,12 +48,24 @@ const ProductDetails = () => {
             preview={preview}
           />
         </section> */}
-        <div className='grid grid-cols-2 gap-10 border w-full h-[500px]'>
-          <div className={`border row-span-2`}>pic1</div>
+        <div className='grid grid-cols-2 gap-5 w-full h-auto'>
+          <img
+            src={productDetail[0]?.avatars[0]?.url}
+            className='row-span-2 h-full w-full object-cover rounded-xl'
+          />
+          <img
+            src={productDetail[0]?.avatars[1]?.url}
+            className='h-full w-full object-cover rounded-xl'
+          />
+          <img
+            src={productDetail[0]?.avatars[2]?.url}
+            className='h-full w-full object-cover rounded-xl'
+          />
+          {/* <div className={`border row-span-2`}>pic1</div>
           <div className='border'>pic2</div>
-          <div className='border'>pic3</div>
+          <div className='border'>pic3</div> */}
         </div>
-      </section>
+      </div>
     </>
   );
 };

@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ProductConfirmation from '../components/ProductConfirmation';
 import Loading from '../components/Loading';
 import Form from '../components/Form';
-import Navigator from '../components/Navigator';
 import { useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 
@@ -180,7 +179,7 @@ const UploadProductPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (params.id) {
+        if (params?.id) {
           await fetchThaiData();
           await getProductById();
         } else {
@@ -192,11 +191,10 @@ const UploadProductPage = () => {
     };
 
     fetchData();
-  }, [params.id]);
+  }, [params?.id]);
 
   return (
     <>
-      {/* <Navigator /> */}
       <main className='font-poppins flex flex-col items-center gap-5 container mx-auto'>
         <h1 className='text-3xl font-medium pt-5 text-center sm:text-left w-full'>
           Upload Product

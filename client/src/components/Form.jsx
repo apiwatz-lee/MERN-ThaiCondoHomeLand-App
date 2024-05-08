@@ -120,8 +120,8 @@ const Form = ({ params }) => {
   const fetchThaiData = async () => {
     try {
       const result = await axios.get(`${server}/province`);
-      const provinceOption = result.data.data.map((item) => {
-        return { id: item.id, option: item.name_th, amphure: item.amphure };
+      const provinceOption = result?.data?.data?.map((item) => {
+        return { id: item?.id, option: item?.name_th, amphure: item?.amphure };
       });
       setFetchProvince(provinceOption);
     } catch (error) {
@@ -132,11 +132,11 @@ const Form = ({ params }) => {
   const handleFindDistrict = () => {
     const cloneProvice = [...fetchProvince];
     const findProvince = cloneProvice.find(
-      (item) => item.option === selectProvince
+      (item) => item?.option === selectProvince
     );
     const eachDistrict = findProvince.amphure;
     const districtOption = eachDistrict.map((item) => {
-      return { id: item.id, option: item.name_th, tambon: item.tambon };
+      return { id: item?.id, option: item?.name_th, tambon: item?.tambon };
     });
     setDistrict(districtOption);
   };
@@ -146,8 +146,8 @@ const Form = ({ params }) => {
     const findDistrict = cloneDistrict.find(
       (item) => item.option === selectDistrict
     );
-    const subDistrictOption = findDistrict?.tambon.map((item) => {
-      return { id: item.id, option: item.name_th };
+    const subDistrictOption = findDistrict?.tambon?.map((item) => {
+      return { id: item?.id, option: item?.name_th };
     });
     setSubDistrict(subDistrictOption);
   };
@@ -296,7 +296,7 @@ const Form = ({ params }) => {
           />
         </div>
 
-        {params.id && (
+        {params?.id && (
           <Button
             type='button'
             onClick={() => setIsDelete(true)}

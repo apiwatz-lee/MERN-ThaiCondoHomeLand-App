@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect } from 'react';
 import PayButton from './PayButton';
 import { useApp } from '../context/AppContext';

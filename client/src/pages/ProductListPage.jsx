@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import { useToast } from '@chakra-ui/react';
 import SearchBar from '../components/SearchBar';
-import Navigator from '../components/Navigator';
 import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
 import ImageSlider from '../components/ImageSlider';
-import Footer from '../components/Footer';
 import { useApp } from '../context/AppContext';
 import FilterZone from '../components/FilterZone';
 const ProductListPage = () => {
@@ -90,8 +88,7 @@ const ProductListPage = () => {
   }, []);
 
   return (
-    <main className='relative'>
-      {/* <Navigator /> */}
+    <div className='relative'>
       <ImageSlider />
       <div className='font-poppins flex flex-col items-center gap-5'>
         <h1 className='w-full text-3xl font-medium pt-5 text-center sm:text-left'>
@@ -103,8 +100,7 @@ const ProductListPage = () => {
         <Loading />
         <Pagination />
       </div>
-      <Footer />
-    </main>
+    </div>
   );
 };
 

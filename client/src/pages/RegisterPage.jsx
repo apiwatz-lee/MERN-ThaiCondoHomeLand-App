@@ -55,7 +55,7 @@ const RegisterPage = () => {
 
   return (
     <>
-      <main className='bg-shopping bg-cover w-screen h-screen font-poppins'>
+      <div className='bg-shopping bg-cover w-screen h-screen font-poppins'>
         <section className='w-full h-full flex flex-col justify-center items-center'>
           <form
             onSubmit={handleValidate}
@@ -116,7 +116,7 @@ const RegisterPage = () => {
             </button>
           </form>
         </section>
-      </main>
+      </div>
     </>
   );
 };

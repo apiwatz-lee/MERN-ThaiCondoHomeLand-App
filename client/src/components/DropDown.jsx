@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DropDown = ({ title, id, option, select, setSelect, titleClass }) => {
   return (
     <div className='flex flex-col justify-center items-center gap-2'>
