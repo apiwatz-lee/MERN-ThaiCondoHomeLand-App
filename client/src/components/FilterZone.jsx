@@ -32,9 +32,10 @@ const FilterZone = () => {
     isFilterOpen,
     setIsFilterOpen,
     keyword,
+    setIsResetFilter,
+    setKeyword,
     page,
     setPage,
-    setIsResetFilter,
   } = useApp();
 
   const server = import.meta.env.VITE_API;
@@ -104,6 +105,8 @@ const FilterZone = () => {
     setSelectDistrict('');
     setSelectSubDistrict('');
     setSelectStatus('');
+    setKeyword('');
+    setPage(1);
     setIsResetFilter(true);
   };
 
@@ -135,7 +138,8 @@ const FilterZone = () => {
       !selectProvince &&
       !selectDistrict &&
       !selectSubDistrict &&
-      !selectStatus
+      !selectStatus &&
+      !keyword
     );
   };
 
