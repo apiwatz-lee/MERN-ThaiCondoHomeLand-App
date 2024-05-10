@@ -14,7 +14,7 @@ const Pagination = () => {
   return (
     <>
       {totalPage > 1 && (
-        <div className='flex flex-col sm:flex-row w-96 justify-center items-center gap-10 pb-10'>
+        <div className='flex flex-col sm:flex-row w-auto justify-center items-center gap-10 pb-10'>
           <button
             className='p-3 rounded-full w-32 bg-slate-100 hover:bg-neutral-100 duration-300'
             type='button'

@@ -13,13 +13,13 @@ const Footer = () => {
 
   return (
     <footer
-      className={`flex flex-col items-center justify-center lg:justify-between gap-10 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36 bg-neutral-100 px-28`}
+      className={`w-full flex flex-col items-center justify-center lg:justify-between gap-5 bg-mountain bg-no-repeat lg:gap-5 lg:flex-row lg:h-36 bg-neutral-100 py-6 lg:px-28`}
     >
       <section className='flex justify-center items-center gap-2'>
         <AiOutlineMail />
         <p>thaicondohomeland@gmail.com</p>
       </section>
-      <section className='w-96 flex justify-center items-center gap-2'>
+      <section className=' flex justify-center items-center gap-2 '>
         <span> &copy;</span>
         <p>Copyright 2024 | ThaiCondoHomeLand</p>
       </section>

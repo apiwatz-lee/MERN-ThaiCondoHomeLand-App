@@ -41,6 +41,8 @@ const AppProvider = ({ children }) => {
   const [keyword, setKeyword] = useState('');
   const [cart, setCart] = useState([]);
 
+  const [isResetFilter, setIsResetFilter] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -110,6 +112,8 @@ const AppProvider = ({ children }) => {
         setIsPaymentSuccess,
         setIsFilterOpen,
         isFilterOpen,
+        isResetFilter,
+        setIsResetFilter,
       }}
     >
       {children}

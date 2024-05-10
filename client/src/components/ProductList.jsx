@@ -13,6 +13,7 @@ const ProductList = () => {
     keyword,
     setIsLoading,
     page,
+    setPage,
     setTotalPage,
     products,
     setProducts,
@@ -22,6 +23,8 @@ const ProductList = () => {
     selectDistrict,
     selectSubDistrict,
     selectStatus,
+    isResetFilter,
+    setIsResetFilter,
   } = useApp();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
@@ -44,6 +47,7 @@ const ProductList = () => {
       setProducts(result?.data?.data);
       setTotalPage(result?.data?.total_pages);
       setIsLoading(false);
+      setIsResetFilter(false);
     } catch (error) {
       console.log(error);
     }
@@ -69,13 +73,22 @@ const ProductList = () => {
   };
 
   useEffect(() => {
+    //if user start to search by keywords, program will first set page to 1 in order to send to backend
+    if (keyword) {
+      setPage(1);
+    }
+
     const delayDebounceFn = setTimeout(() => {
       fetchProducts();
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [keyword, page]);
+  }, [keyword]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [page, isResetFilter]);
 
   useEffect(() => {
     handleAuth();

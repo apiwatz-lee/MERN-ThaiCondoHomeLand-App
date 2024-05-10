@@ -34,6 +34,7 @@ const FilterZone = () => {
     keyword,
     page,
     setPage,
+    setIsResetFilter,
   } = useApp();
 
   const server = import.meta.env.VITE_API;
@@ -89,7 +90,6 @@ const FilterZone = () => {
       const filter = await axios.get(`${server}/product?${params.toString()}`);
       setIsLoading(false);
       setIsFilterOpen(false);
-      // handleResetValue();
       setProducts(filter?.data?.data);
       setTotalPage(filter?.data?.total_pages);
     } catch (error) {
@@ -104,6 +104,7 @@ const FilterZone = () => {
     setSelectDistrict('');
     setSelectSubDistrict('');
     setSelectStatus('');
+    setIsResetFilter(true);
   };
 
   useEffect(() => {
@@ -127,16 +128,40 @@ const FilterZone = () => {
     }
   }, [isFilterOpen]);
 
+  const checkIsNoFilter = () => {
+    return (
+      !selectAssetType &&
+      !selectAssetType &&
+      !selectProvince &&
+      !selectDistrict &&
+      !selectSubDistrict &&
+      !selectStatus
+    );
+  };
+
   return (
     <>
-      <section className='w-full flex'>
-        <div
-          className='flex justify-center items-center gap-2 rounded-xl border p-3 px-4 hover:bg-gray-200 duration-300 cursor-pointer'
+      <section className='w-full flex gap-2'>
+        <button
+          className=' flex justify-center gap-2 items-center rounded-xl border p-3 px-4 bg-gray-200 hover:bg-gray-100 duration-300 cursor-pointer'
           onClick={() => setIsFilterOpen(!isFilterOpen)}
         >
           <IoFilter />
           Filters
-        </div>
+        </button>
+
+        <button
+          disabled={checkIsNoFilter()}
+          className={` flex justify-center items-center gap-2 px-4 duration-300 text-sm ${
+            checkIsNoFilter()
+              ? 'cursor-no-drop text-gray-200'
+              : 'cursor-pointer text-red-500'
+          }`}
+          onClick={handleResetValue}
+        >
+          {/* <IoFilter /> */}
+          Reset filters
+        </button>
       </section>
 
       {isFilterOpen && (
