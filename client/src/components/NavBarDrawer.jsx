@@ -53,7 +53,7 @@ const NavBarDrawer = ({ toggleMenu, isOpen, setIsOpen }) => {
 
   return (
     <nav
-      className={`sm:hidden fixed z-40 ${
+      className={`md:hidden fixed z-40 ${
         isOpen ? 'top-0' : 'top-[-100%]'
       } h-auto w-full bg-cyan-950 duration-300`}
     >

@@ -9,7 +9,7 @@ const SearchBar = () => {
       <input
         type='text'
         className='border h-14 rounded-full w-full pl-14 outline-none placeholder:text-gray-400 placeholder:font-light text-gray-500'
-        placeholder='Search assets by your keywords'
+        placeholder='พิมพ์โซนที่คุณกำลังมองหา เช่น บางแค '
         value={keyword}
         onChange={(e) => {
           setKeyword(e.target.value);

@@ -131,8 +131,8 @@ const UploadProductPage = () => {
   const fetchThaiData = async () => {
     try {
       const result = await axios.get(`${server}/province`);
-      const provinceOption = result.data.data.map((item) => {
-        return { id: item.id, option: item.name_th, amphure: item.amphure };
+      const provinceOption = result?.data?.data?.map((item) => {
+        return { id: item?.id, option: item?.name_th, amphure: item?.amphure };
       });
       setFetchProvince(provinceOption);
     } catch (error) {
@@ -142,7 +142,7 @@ const UploadProductPage = () => {
 
   const getProductById = async () => {
     try {
-      const response = await axios.get(`${server}/product/${params.id}`);
+      const response = await axios.get(`${server}/product/${params?.id}`);
       setSelectSellType(response.data.data[0].sell);
       setSelectAssetType(response.data.data[0].asset);
       setSelectProvince(response.data.data[0].province);

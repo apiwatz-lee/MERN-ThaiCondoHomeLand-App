@@ -95,14 +95,13 @@ const Dropzone = () => {
       {avatars.length < 6 && (
         <div
           {...getRootProps()}
-          className={`border-2 border-dashed flex flex-col justify-center items-center min-h-[40vh] rounded-2xl 
-                    ${
-                      isDragActive && !isDragReject
-                        ? 'border-green-500'
-                        : isDragReject
-                        ? 'border-red-500'
-                        : null
-                    }`}
+          className={`border-2 border-dashed flex flex-col justify-center items-center min-h-[40vh] rounded-2xl ${
+            isDragActive && !isDragReject
+              ? 'border-green-500'
+              : isDragReject
+              ? 'border-red-500'
+              : null
+          }`}
         >
           <input {...getInputProps()} />
           {isDragActive && !isDragReject && (

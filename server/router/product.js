@@ -14,13 +14,21 @@ const avatarUpload = multerUpload.fields([{ name: 'avatar', maxCount: 6 }]);
 productRouter.get('/', async (req, res) => {
   try {
     const query = {};
-    const PAGE_SIZE = 24;
+
+    //pagination
+    const PAGE_SIZE = 10;
     const page = req.query.page;
     const skip = PAGE_SIZE * (page - 1);
 
     if (req.query) {
-      const { sell, asset, province, district, subDistrict, status, keyword } =
-        req.query;
+      const { keyword, page, ...rest } = req.query;
+
+      //rest are keys that we filter
+      for (let key in rest) {
+        if (rest[key] !== '') {
+          query[key] = rest[key];
+        }
+      }
 
       if (keyword) {
         query.$or = [
@@ -37,50 +45,30 @@ productRouter.get('/', async (req, res) => {
         ];
       }
 
-      if (sell) {
-        query.sell = sell;
-      }
-
-      if (asset) {
-        query.asset = asset;
-      }
-
-      if (province) {
-        query.province = province;
-      }
-
-      if (district) {
-        query.district = district;
-      }
-
-      if (subDistrict) {
-        query.subDistrict = subDistrict;
-      }
-
-      if (status) {
-        query.status = status;
-      }
-
-      const collection = db.collection('products');
-      const products = await collection.find(query).limit(24).toArray();
-
-      const count = await collection.countDocuments(query);
-      const totalPages = Math.ceil(count / PAGE_SIZE);
-      return res.status(200).json({ data: products, total_pages: totalPages });
-    } else {
       const collection = db.collection('products');
       const products = await collection
         .find(query)
         .skip(skip)
-        .limit(24)
+        .limit(10)
         .toArray();
 
       const count = await collection.countDocuments(query);
       const totalPages = Math.ceil(count / PAGE_SIZE);
       return res.status(200).json({ data: products, total_pages: totalPages });
     }
+    // else {
+    //   const collection = db.collection('products');
+    //   const products = await collection
+    //     .find(query)
+    //     .skip(skip)
+    //     .limit(10)
+    //     .toArray();
+    //   const count = await collection.countDocuments(query);
+    //   const totalPages = Math.ceil(count / PAGE_SIZE);
+    //   return res.status(200).json({ data: products, total_pages: totalPages });
+    // }
   } catch (error) {
-    return res.status(404).json({ error: error });
+    return res.status(400).json({ error: error });
   }
 });
 

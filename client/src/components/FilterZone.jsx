@@ -7,7 +7,6 @@ import { sellOption, assetOption, statusOption } from '../data/Option';
 import axios from 'axios';
 
 const FilterZone = () => {
-  const { isFilterOpen, setIsFilterOpen } = useApp();
   const {
     selectSellType,
     setSelectSellType,
@@ -29,6 +28,12 @@ const FilterZone = () => {
     setSubDistrict,
     setIsLoading,
     setProducts,
+    setTotalPage,
+    isFilterOpen,
+    setIsFilterOpen,
+    keyword,
+    page,
+    setPage,
   } = useApp();
 
   const server = import.meta.env.VITE_API;
@@ -46,8 +51,8 @@ const FilterZone = () => {
   };
 
   const handleFindDistrict = () => {
-    const cloneProvice = [...fetchProvince];
-    const findProvince = cloneProvice.find(
+    // const cloneProvice = [...fetchProvince];
+    const findProvince = fetchProvince.find(
       (item) => item.option === selectProvince
     );
     const eachDistrict = findProvince.amphure;
@@ -58,8 +63,8 @@ const FilterZone = () => {
   };
 
   const handleFindSubDistrict = () => {
-    const cloneDistrict = [...district];
-    const findDistrict = cloneDistrict.find(
+    // const cloneDistrict = [...district];
+    const findDistrict = district.find(
       (item) => item.option === selectDistrict
     );
     const subDistrictOption = findDistrict?.tambon.map((item) => {
@@ -70,6 +75,7 @@ const FilterZone = () => {
 
   const handleFilterAsset = async () => {
     try {
+      setPage(1);
       const params = new URLSearchParams();
       params.append('sell', selectSellType);
       params.append('asset', selectAssetType);
@@ -77,12 +83,15 @@ const FilterZone = () => {
       params.append('district', selectDistrict);
       params.append('subDistrict', selectSubDistrict);
       params.append('status', selectStatus);
+      params.append('keyword', keyword);
+      params.append('page', page);
       setIsLoading(true);
       const filter = await axios.get(`${server}/product?${params.toString()}`);
       setIsLoading(false);
       setIsFilterOpen(false);
-      handleResetValue();
-      setProducts(filter.data.data);
+      // handleResetValue();
+      setProducts(filter?.data?.data);
+      setTotalPage(filter?.data?.total_pages);
     } catch (error) {
       console.error(error);
     }
@@ -109,6 +118,14 @@ const FilterZone = () => {
       handleFindSubDistrict();
     }
   }, [district, selectDistrict]);
+
+  useEffect(() => {
+    if (isFilterOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style = 'none';
+    }
+  }, [isFilterOpen]);
 
   return (
     <>

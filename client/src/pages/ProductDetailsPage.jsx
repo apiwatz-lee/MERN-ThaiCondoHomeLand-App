@@ -19,10 +19,6 @@ const ProductDetails = () => {
     }
   };
 
-  useEffect(() => {
-    getProductById();
-  }, []);
-
   const handlePreview = (id) => {
     const previewImg = productDetail[0].avatars.filter(
       (avatar) => avatar.publicId === id
@@ -30,7 +26,9 @@ const ProductDetails = () => {
     setPreview(previewImg);
   };
 
-  console.log({ product: productDetail });
+  useEffect(() => {
+    getProductById();
+  }, []);
 
   return (
     <>

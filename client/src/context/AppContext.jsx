@@ -31,15 +31,15 @@ const AppProvider = ({ children }) => {
   const [isDeleteCompleted, setIsDeleteCompleted] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const [keyword, setKeyword] = useState('');
-  const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [keyword, setKeyword] = useState('');
+  const [cart, setCart] = useState([]);
 
   return (
     <AppContext.Provider
@@ -108,8 +108,8 @@ const AppProvider = ({ children }) => {
         setTotalPage,
         isPaymentSuccess,
         setIsPaymentSuccess,
-        isFilterOpen,
         setIsFilterOpen,
+        isFilterOpen,
       }}
     >
       {children}

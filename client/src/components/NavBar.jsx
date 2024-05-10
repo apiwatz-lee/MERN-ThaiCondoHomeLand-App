@@ -103,11 +103,12 @@ export default function NavBar() {
 
       {/* Desktop */}
       <nav
-        className={` flex justify-between items-center lg:text-base py-5 px-28 mb-5 sticky top-0 z-30 bg-neutral-100 transition-transform duration-500 transform ${
+        className={` flex justify-between items-center lg:text-base py-5 px-14 sm:px-28 mb-5 sticky top-0 z-30 bg-neutral-100 transition-transform duration-500 transform ${
           show ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <ul className='hidden sm:flex justify-center items-center gap-5 lg:p-3 h-16'>
+        {/* Path */}
+        <ul className='hidden lg:flex justify-center items-center gap-5 lg:p-3 h-16'>
           {anchor.length > 0 &&
             anchor?.map((item) => {
               return (
@@ -127,8 +128,9 @@ export default function NavBar() {
             })}
         </ul>
 
+        {/* Logo */}
         <div
-          className='hidden sm:flex flex-col justify-center items-center gap-2 cursor-pointer'
+          className='hidden lg:flex flex-col justify-center items-center gap-2 cursor-pointer'
           onClick={() => navigate('/')}
         >
           <img src={logo} alt='logo' className='w-12' />
@@ -137,24 +139,26 @@ export default function NavBar() {
           </p>
         </div>
 
-        <ul className='relative flex justify-between sm:justify-center items-center p-3 w-full sm:w-auto'>
-          <div className='sm:hidden' onClick={toggleMenu}>
+        <ul className='relative flex justify-between items-center p-3 w-full lg:w-auto'>
+          {/* Hamburgur Icon */}
+          <div className='lg:hidden' onClick={toggleMenu}>
             <HamburgerIcon className='text-2xl text-cyan-900 hover:text-gray-500 duration-300 cursor-pointer' />
           </div>
 
+          {/* Guest or Admin */}
           <li className='flex justify-center items-center gap-1 cursor-pointer'>
-            <p>{isAuthenticated ? `Hello ${user}` : `Hello Guest`} </p>
-            <span> | </span>
+            <p>{isAuthenticated ? `Hello ${user}` : `Hello Guest`} |</p>
+
             {isAuthenticated ? (
               <p
-                className='hidden sm:block cursor-pointer text-red-500 font-semibold hover:text-red-700 duration-500'
+                className='hidden lg:block cursor-pointer text-red-500 font-semibold hover:text-red-700 duration-500'
                 onClick={() => handleLogout()}
               >
                 Log out
               </p>
             ) : (
               <p
-                className='hidden sm:block cursor-pointer font-semibold hover:text-cyan-600 duration-500'
+                className='hidden lg:block cursor-pointer font-semibold hover:text-cyan-600 duration-500'
                 onClick={() => navigate('/login')}
               >
                 Log in

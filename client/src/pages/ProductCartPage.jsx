@@ -1,4 +1,3 @@
-import React from 'react';
 import ProductCartList from '../components/ProductCartList';
 import ProductCartSummary from '../components/ProductCartSummary';
 import { CiShoppingCart } from 'react-icons/ci';

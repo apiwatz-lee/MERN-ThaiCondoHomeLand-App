@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import { useToast } from '@chakra-ui/react';
 import SearchBar from '../components/SearchBar';
@@ -91,7 +91,7 @@ const ProductListPage = () => {
     <div className='relative'>
       <ImageSlider />
       <div className='font-poppins flex flex-col items-center gap-5'>
-        <h1 className='w-full text-3xl font-medium pt-5 text-center sm:text-left'>
+        <h1 className='w-full text-3xl font-medium pt-5 text-center lg:text-left'>
           Assets list
         </h1>
         <SearchBar />
