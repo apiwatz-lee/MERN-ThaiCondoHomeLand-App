@@ -38,7 +38,8 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem('token', token);
       const userDataFromToken = jwtDecode(token);
       setState({ ...state, user: userDataFromToken });
-      navigate('/');
+      // navigate('/');
+      window.location.replace(window.location.origin); //to fix state unclear value
       toast({
         title: 'Login successfully',
         description: `Hello ${userDataFromToken.firstname}, Have a good day!`,
@@ -68,7 +69,8 @@ const AuthProvider = ({ children }) => {
     const name = decodeToken.firstname;
     localStorage.removeItem('token');
     setState({ ...state, user: null });
-    navigate('/');
+    // navigate('/');
+    window.location.replace(window.location.origin); //to fix state unclear value
     toast({
       title: 'Logout successfully.',
       description: `Hey ${name}, See you around!`,

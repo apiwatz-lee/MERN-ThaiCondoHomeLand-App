@@ -1,12 +1,11 @@
-import { IoFilter } from 'react-icons/io5';
-import { useState, useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import logo from '../assets/img/logo.png';
 import DropDown from './DropDown';
 import { sellOption, assetOption, statusOption } from '../data/Option';
 import axios from 'axios';
 
-const FilterZone = () => {
+const ModalFilter = () => {
   const {
     selectSellType,
     setSelectSellType,
@@ -98,18 +97,6 @@ const FilterZone = () => {
     }
   };
 
-  const handleResetValue = () => {
-    setSelectSellType('');
-    setSelectAssetType('');
-    setSelectProvince('');
-    setSelectDistrict('');
-    setSelectSubDistrict('');
-    setSelectStatus('');
-    setKeyword('');
-    setPage(1);
-    setIsResetFilter(true);
-  };
-
   useEffect(() => {
     fetchThaiData();
     if (selectProvince) {
@@ -131,44 +118,9 @@ const FilterZone = () => {
     }
   }, [isFilterOpen]);
 
-  const checkIsNoFilter = () => {
-    return (
-      !selectAssetType &&
-      !selectAssetType &&
-      !selectProvince &&
-      !selectDistrict &&
-      !selectSubDistrict &&
-      !selectStatus &&
-      !keyword
-    );
-  };
-
   return (
     <>
-      <section className='w-full flex gap-2'>
-        <button
-          className=' flex justify-center gap-2 items-center rounded-xl border p-3 px-4 bg-gray-200 hover:bg-gray-100 duration-300 cursor-pointer'
-          onClick={() => setIsFilterOpen(!isFilterOpen)}
-        >
-          <IoFilter />
-          Filters
-        </button>
-
-        <button
-          disabled={checkIsNoFilter()}
-          className={` flex justify-center items-center gap-2 px-4 duration-300 text-sm ${
-            checkIsNoFilter()
-              ? 'cursor-no-drop text-gray-200'
-              : 'cursor-pointer text-red-500'
-          }`}
-          onClick={handleResetValue}
-        >
-          {/* <IoFilter /> */}
-          Reset filters
-        </button>
-      </section>
-
-      {/* {isFilterOpen && (
+      {isFilterOpen && (
         <section
           className='fixed backdrop-blur-[5px] bg-black/80 w-full h-full top-0 z-50 flex justify-center items-center'
           onClick={() => setIsFilterOpen(false)}
@@ -246,9 +198,9 @@ const FilterZone = () => {
             </div>
           </div>
         </section>
-      )} */}
+      )}
     </>
   );
 };
 
-export default FilterZone;
+export default ModalFilter;

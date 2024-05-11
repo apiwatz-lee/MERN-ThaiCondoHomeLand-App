@@ -10,7 +10,7 @@ const LoginPage = () => {
       <div className=' font-poppins bg-shopping bg-cover'>
         <div
           className='hidden lg:block absolute top-5 left-5 text-white cursor-pointer'
-          onClick={() => navigate('/')}
+          onClick={() => window.location.replace(window.location.origin)} //to fix state unclear value
         >
           <FaArrowLeftLong className='text-3xl hover:text-gray-300 duration-300' />
         </div>

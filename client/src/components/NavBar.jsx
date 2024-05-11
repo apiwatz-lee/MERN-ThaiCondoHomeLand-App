@@ -18,8 +18,10 @@ export default function NavBar() {
   // Hook
   const location = useLocation();
   const navigate = useNavigate();
-  const { setKeyword } = useApp();
+
   const { logout, isAuthenticated, state } = useAuth();
+
+  const { setKeyword } = useApp();
 
   let anchor;
   let name;
@@ -104,6 +106,8 @@ export default function NavBar() {
               return (
                 <li key={item.id}>
                   <Link
+                    // onClick={handleResetValue}
+                    onClick={() => location.reload()}
                     to={item.path}
                     className={`text-[15px] sm:text-base text-center text-gray-500 hover:text-cyan-800 duration-500 ${
                       location?.pathname === item?.path
@@ -121,7 +125,7 @@ export default function NavBar() {
         {/* Logo */}
         <div
           className='hidden lg:flex flex-col justify-center items-center gap-2 cursor-pointer'
-          onClick={() => navigate('/')}
+          onClick={() => window.location.replace(window.location.origin)} //to fix state unclear value
         >
           <img src={logo} alt='logo' className='w-12' />
           <p className='tracking-widest font-medium hidden sm:block'>
