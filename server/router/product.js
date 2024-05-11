@@ -48,6 +48,7 @@ productRouter.get('/', async (req, res) => {
       const collection = db.collection('products');
       const products = await collection
         .find(query)
+        .sort({ created_at: -1 })
         .skip(skip)
         .limit(10)
         .toArray();
