@@ -74,7 +74,7 @@ const ProductDetails = () => {
                       <img
                         key={index}
                         src={item?.url}
-                        className='max-h-[700px] rounded-lg aspect-square object-cover'
+                        className='max-h-[700px] w-[800px] rounded-lg aspect-square object-cover'
                       />
                     )}
                   </div>
@@ -84,7 +84,7 @@ const ProductDetails = () => {
             {/* Tiktok link */}
             {productDetail[0]?.link && (
               <div
-                className='absolute top-2 right-1 text-sm cursor-pointer border flex items-center bg-gray-300 bg-opacity-60 p-1 rounded-xl gap-1 lg:right-16 lg:top-2 xl:right-0 xl:top-0'
+                className='absolute top-0 right-0 text-sm cursor-pointer border flex items-center bg-gray-300 bg-opacity-60 p-1 rounded-xl gap-1 lg:right-16 lg:top-2 xl:right-0 xl:top-0'
                 onClick={() => window.open(`${productDetail[0]?.link}`)}
               >
                 <VideoIcon className='p-1 text-red-600 text-3xl rounded-lg' />
@@ -138,17 +138,17 @@ const ProductDetails = () => {
             {tab === 'location' && (
               <div className='p-4'>
                 <div className='py-4 px-5 sm:px-10 bg-gray-100 flex justify-between'>
-                  <div className='w-60'>จังหวัด</div>
+                  <div className='w-60 min-w-[110px]'>จังหวัด</div>
                   <div className='w-full'>{productDetail[0]?.province}</div>
                 </div>
 
                 <div className='py-4 px-5 sm:px-10 flex justify-between'>
-                  <div className='w-60'>อำเภอ</div>
+                  <div className='w-60 min-w-[110px]'>อำเภอ</div>
                   <div className='w-full'>{productDetail[0]?.district}</div>
                 </div>
 
                 <div className='py-4 px-5 sm:px-10 bg-gray-100 flex justify-between'>
-                  <div className='w-60'>ตำบล</div>
+                  <div className='w-60 min-w-[110px]'>ตำบล</div>
                   <div className='w-full'>{productDetail[0]?.subDistrict}</div>
                 </div>
               </div>
