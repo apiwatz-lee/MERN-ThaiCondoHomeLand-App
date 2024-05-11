@@ -9,7 +9,7 @@ import { FaLine as LineIcon, FaPhoneAlt as PhoneIcon } from 'react-icons/fa';
 
 const ProductDetails = () => {
   const [productDetail, setProductDetail] = useState([]);
-  const [tab, setTab] = useState('contact');
+  const [tab, setTab] = useState('description');
   const [isLoading, setIsLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const params = useParams();
