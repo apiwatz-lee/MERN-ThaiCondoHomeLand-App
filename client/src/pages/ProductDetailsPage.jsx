@@ -84,7 +84,7 @@ const ProductDetails = () => {
             {/* Tiktok link */}
             {productDetail[0]?.link && (
               <div
-                className='absolute top-0 right-0 text-sm cursor-pointer border flex items-center bg-gray-300 bg-opacity-60 p-1 rounded-xl gap-1 '
+                className='absolute top-2 right-1 text-sm cursor-pointer border flex items-center bg-gray-300 bg-opacity-60 p-1 rounded-xl gap-1 lg:right-16 lg:top-2 xl:right-0 xl:top-0'
                 onClick={() => window.open(`${productDetail[0]?.link}`)}
               >
                 <VideoIcon className='p-1 text-red-600 text-3xl rounded-lg' />
