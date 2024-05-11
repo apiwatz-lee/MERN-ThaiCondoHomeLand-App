@@ -51,11 +51,11 @@ const ProductDetails = () => {
 
           <div className='relative flex max-w-screen-lg justify-center items-center'>
             <ArrowLeft
-              className='absolute top-[50%] left-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-300 p-2 w-12 h-12'
+              className='absolute top-[50%] left-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-500 p-2 w-12 h-12'
               onClick={handlePrevious}
             />
             <ArrowRight
-              className='absolute top-[50%] right-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-300 p-2 w-12 h-12'
+              className='absolute top-[50%] right-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-500 p-2 w-12 h-12'
               onClick={handleNext}
             />
 
