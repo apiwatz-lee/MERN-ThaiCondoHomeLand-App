@@ -5,8 +5,8 @@ import { AiOutlineMail } from 'react-icons/ai';
 const Footer = () => {
   const socials = socialMedia.map((item) => {
     return (
-      <Link to={item.url} target='_blank' key={item.id}>
-        {item.icon}
+      <Link to={item?.url} target='_blank' key={item?.id}>
+        {item?.icon}
       </Link>
     );
   });
@@ -19,9 +19,10 @@ const Footer = () => {
         <AiOutlineMail />
         <p>thaicondohomeland@gmail.com</p>
       </section>
-      <section className=' flex justify-center items-center gap-2 '>
+      <section className=' flex justify-center items-center gap-2 flex-wrap'>
         <span> &copy;</span>
-        <p>Copyright 2024 | ThaiCondoHomeLand</p>
+        <p>Copyright 2024 |</p>
+        <span>ThaiCondoHomeLand</span>
       </section>
       <section className='flex justify-center items-center text-2xl gap-5'>
         {socials}

@@ -1,40 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import PreviewImage from '../components/PreviewImage';
-import ProductInfo from '../components/ProductInfo';
 import {
   AiOutlineArrowLeft as ArrowLeft,
   AiOutlineArrowRight as ArrowRight,
 } from 'react-icons/ai';
+import { FaLine as LineIcon, FaPhoneAlt as PhoneIcon } from 'react-icons/fa';
 
 const ProductDetails = () => {
   const [productDetail, setProductDetail] = useState([]);
+  const [tab, setTab] = useState('contact');
   const [isLoading, setIsLoading] = useState(true);
-  const [preview, setPreview] = useState([]);
   const [current, setCurrent] = useState(0);
   const params = useParams();
   const server = import.meta.env.VITE_API;
 
   const getProductById = async () => {
     try {
-      const response = await axios.get(`${server}/product/${params.id}`);
-      setProductDetail(response.data.data);
+      setIsLoading(true);
+      const response = await axios.get(`${server}/product/${params?.id}`);
+      setProductDetail(response?.data?.data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-
-  const handlePreview = (id) => {
-    const previewImg = productDetail[0].avatars.filter(
-      (avatar) => avatar.publicId === id
-    );
-    setPreview(previewImg);
-  };
-
-  useEffect(() => {
-    getProductById();
-  }, []);
 
   const handlePrevious = () => {
     setCurrent((prev) =>
@@ -48,48 +38,155 @@ const ProductDetails = () => {
     );
   };
 
-  console.log(productDetail);
+  useEffect(() => {
+    getProductById();
+  }, []);
 
   return (
     <>
-      <div className='font-poppins w-full flex flex-col items-center gap-5 '>
-        {/* Image */}
-        <div className='relative flex max-w-screen-lg justify-center items-center'>
-          <ArrowLeft
-            className='absolute top-[50%] left-0 text-4xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-900'
-            onClick={handlePrevious}
-          />
-          <ArrowRight
-            className='absolute top-[50%] right-0 text-4xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-900'
-            onClick={handleNext}
-          />
+      {!isLoading && productDetail.length > 0 && (
+        <div className='font-poppins w-full flex flex-col xl:flex-row xl:items-start justify-center gap-10 lg:gap-32 '>
+          {/* Image section */}
+          <div className='relative flex max-w-screen-lg justify-center items-center'>
+            <ArrowLeft
+              className='absolute top-[50%] left-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-300 p-2 w-12 h-12'
+              onClick={handlePrevious}
+            />
+            <ArrowRight
+              className='absolute top-[50%] right-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-300 p-2 w-12 h-12'
+              onClick={handleNext}
+            />
 
-          {productDetail[0]?.avatars.length > 0 &&
-            productDetail[0]?.avatars.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`${
-                    current === index
-                      ? 'opacity-100 scale-105 duration-1000'
-                      : 'opacity-0'
-                  }`}
-                >
-                  {current === index && (
-                    <img
-                      key={index}
-                      src={item?.url}
-                      className='max-h-[700px] rounded-lg aspect-square object-cover'
-                    />
-                  )}
+            {productDetail[0]?.avatars?.length > 0 &&
+              productDetail[0]?.avatars?.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`${
+                      current === index
+                        ? 'opacity-100 scale-105 duration-1000'
+                        : 'opacity-0'
+                    }`}
+                  >
+                    {current === index && (
+                      <img
+                        key={index}
+                        src={item?.url}
+                        className='max-h-[700px] rounded-lg aspect-square object-cover'
+                      />
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* Description Panel */}
+          <div className='p-4 rounded-3xl flex flex-col border w-full xl:w-[40%] shadow-md lg:sticky lg:top-10'>
+            {/* Tab Description */}
+            <div className='flex justify-between items-center h-10'>
+              <button
+                className={`border-b-2 w-full min-w-[105px] text-center p-2  text-lg ${
+                  tab === 'description' &&
+                  'border-b-cyan-600 text-cyan-600 font-bold'
+                }`}
+                onClick={() => setTab('description')}
+              >
+                รายละเอียด
+              </button>
+              <button
+                className={`border-b-2 w-full text-center p-2 text-lg ${
+                  tab === 'location' &&
+                  'border-b-cyan-600 text-cyan-600 font-bold'
+                }`}
+                onClick={() => setTab('location')}
+              >
+                ทำเลที่ตั้ง
+              </button>
+
+              <button
+                className={`hidden sm:block border-b-2 w-full text-center p-2  text-lg ${
+                  tab === 'contact' &&
+                  'border-b-cyan-600 text-cyan-600 font-bold'
+                }`}
+                onClick={() => setTab('contact')}
+              >
+                ติดต่อ
+              </button>
+            </div>
+
+            {tab === 'description' && (
+              <div className='p-4 whitespace-pre-wrap text-lg font-normal'>
+                {productDetail[0]?.description}
+              </div>
+            )}
+
+            {tab === 'location' && (
+              <div className='p-4'>
+                <div className='py-4 px-5 sm:px-10 bg-gray-100 flex justify-between'>
+                  <div className='w-60'>จังหวัด</div>
+                  <div className='w-full'>{productDetail[0]?.province}</div>
                 </div>
-              );
-            })}
-        </div>
 
-        {/* Detail */}
-        <div className='w-full'>test</div>
-      </div>
+                <div className='py-4 px-5 sm:px-10 flex justify-between'>
+                  <div className='w-60'>อำเภอ</div>
+                  <div className='w-full'>{productDetail[0]?.district}</div>
+                </div>
+
+                <div className='py-4 px-5 sm:px-10 bg-gray-100 flex justify-between'>
+                  <div className='w-60'>ตำบล</div>
+                  <div className='w-full'>{productDetail[0]?.subDistrict}</div>
+                </div>
+              </div>
+            )}
+
+            {tab === 'contact' && (
+              <div className='p-10 text-lg font-normal flex justify-center items-center gap-3 w-full'>
+                <button
+                  className='border border-cyan-600 text-cyan-600 p-2 px-4 flex justify-center items-center gap-3 rounded-lg'
+                  onClick={() => window.open('https://lin.ee/US48sck')}
+                >
+                  <LineIcon />
+                  <span> ติดต่อผ่านไลน์</span>
+                </button>
+                <a href='tel:+0635954524'>
+                  <button className='border border-cyan-600 text-cyan-600 p-2 px-4 flex justify-center items-center gap-3 rounded-lg'>
+                    <PhoneIcon /> โทร 063-595-4524
+                  </button>
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* Contact Panel Mobile */}
+          <div className='p-4 sm:hidden rounded-3xl flex flex-col border w-full xl:w-[40%] shadow-md lg:sticky lg:top-10 gap-3'>
+            <div className='flex justify-between items-center h-10'>
+              <button
+                className={` border-b-2 w-full text-center p-2  text-lg ${
+                  tab === 'contact' &&
+                  'border-b-cyan-600 text-cyan-600 font-bold'
+                }`}
+                onClick={() => setTab('contact')}
+              >
+                ติดต่อ
+              </button>
+            </div>
+            <div className='p-2 text-lg font-normal flex flex-wrap justify-center items-center gap-3 w-full'>
+              <button
+                className='border border-cyan-600 text-cyan-600 p-2 flex justify-center items-center gap- text-sm rounded-lg'
+                onClick={() => window.open('https://lin.ee/US48sck')}
+              >
+                <LineIcon />
+                <span> ติดต่อผ่านไลน์</span>
+              </button>
+              <a href='tel:+0635954524'>
+                <button className='border border-cyan-600 text-cyan-600 p-2 flex justify-center items-center gap-3 text-sm rounded-lg'>
+                  <PhoneIcon /> โทร 063-595-4524
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
