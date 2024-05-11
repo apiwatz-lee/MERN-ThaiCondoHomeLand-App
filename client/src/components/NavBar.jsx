@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/Authentication';
 import { jwtDecode } from 'jwt-decode';
-import { FaBars as HamburgerIcon, FaTimes as CancelIcon } from 'react-icons/fa';
+import { FaBars as HamburgerIcon } from 'react-icons/fa';
 import { CiShoppingTag as ShoppingIcon } from 'react-icons/ci';
 import { IoCloudUploadOutline as UploadIcon } from 'react-icons/io5';
 import logo from '../assets/img/logo.png';
@@ -14,15 +14,15 @@ export default function NavBar() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [anchor, setAnchor] = useState([]);
-  const [user, setUser] = useState(null);
-  const [role, setRole] = useState(null);
 
   // Hook
   const location = useLocation();
   const navigate = useNavigate();
   const { setKeyword } = useApp();
-  const { logout, isAuthenticated } = useAuth();
+  const { logout, isAuthenticated, state } = useAuth();
+
+  let anchor;
+  let name;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,18 +45,13 @@ export default function NavBar() {
     }
   };
 
-  const handleAuth = () => {
-    if (isAuthenticated) {
-      const getToken = localStorage.getItem('token');
-      const decodeToken = jwtDecode(getToken);
-      setRole(decodeToken?.role);
-      setUser(decodeToken?.firstname);
-    }
-  };
-
-  const handleAnchor = () => {
+  if (isAuthenticated) {
+    const getToken = localStorage.getItem('token');
+    const decodeToken = jwtDecode(getToken);
+    const role = decodeToken.role;
+    name = decodeToken.firstname;
     if (role === 'admin') {
-      setAnchor([
+      anchor = [
         { id: 1, name: 'Assets list', path: '/', icon: <ShoppingIcon /> },
         {
           id: 2,
@@ -64,13 +59,17 @@ export default function NavBar() {
           path: '/product/upload',
           icon: <UploadIcon />,
         },
-      ]);
-    } else {
-      setAnchor([
+      ];
+    } else if (role === 'user') {
+      anchor = [
         { id: 1, name: 'Assets list', path: '/', icon: <ShoppingIcon /> },
-      ]);
+      ];
     }
-  };
+  } else if (!isAuthenticated) {
+    anchor = [
+      { id: 1, name: 'Assets list', path: '/', icon: <ShoppingIcon /> },
+    ];
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -82,26 +81,17 @@ export default function NavBar() {
     }
   }, [lastScrollY]);
 
-  useEffect(() => {
-    try {
-      handleAuth();
-      handleAnchor();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
   return (
     <>
       {/* NavBarDrawer */}
-
       <NavBarDrawer
         toggleMenu={toggleMenu}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        anchor={anchor}
       />
-
       {/* Desktop */}
+      {/* Nav Container */}
       <nav
         className={` flex justify-between items-center lg:text-base py-5 px-14 sm:px-28 mb-5 sticky top-0 z-30 bg-neutral-100 transition-transform duration-500 transform ${
           show ? 'translate-y-0' : '-translate-y-full'
@@ -115,9 +105,9 @@ export default function NavBar() {
                 <li key={item.id}>
                   <Link
                     to={item.path}
-                    className={`text-[15px] sm:text-base text-center text-gray-500 hover:text-gray-800 duration-500 ${
-                      location.pathname === item?.path
-                        ? 'text-gray-950 font-bold sm:font-normal underline-offset-8 sm:bg-gray-100 sm:p-2 rounded-xl'
+                    className={`text-[15px] sm:text-base text-center text-gray-500 hover:text-cyan-800 duration-500 ${
+                      location?.pathname === item?.path
+                        ? 'text-cyan-700 font-bold border-b-2 border-b-cyan-600 sm:font-semibold sm:p-2'
                         : null
                     }`}
                   >
@@ -147,7 +137,7 @@ export default function NavBar() {
 
           {/* Guest or Admin */}
           <li className='flex justify-center items-center gap-1 cursor-pointer'>
-            <p>{isAuthenticated ? `Hello ${user}` : `Hello Guest`} |</p>
+            <p>{isAuthenticated ? `Hello ${name}` : `Hello Guest`} |</p>
 
             {isAuthenticated ? (
               <p
@@ -158,7 +148,7 @@ export default function NavBar() {
               </p>
             ) : (
               <p
-                className='hidden lg:block cursor-pointer font-semibold hover:text-cyan-600 duration-500'
+                className='hidden lg:block cursor-pointer font-semibold hover:text-cyan-600 text-cyan-600 duration-500'
                 onClick={() => navigate('/login')}
               >
                 Log in
