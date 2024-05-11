@@ -160,27 +160,21 @@ const ProductDetails = () => {
           {/* Contact Panel Mobile */}
           <div className='p-4 sm:hidden rounded-3xl flex flex-col border w-full xl:w-[40%] shadow-md lg:sticky lg:top-10 gap-3'>
             <div className='flex justify-between items-center h-10'>
-              <button
-                className={` border-b-2 w-full text-center p-2  text-lg ${
-                  tab === 'contact' &&
-                  'border-b-cyan-600 text-cyan-600 font-bold'
-                }`}
-                onClick={() => setTab('contact')}
-              >
+              <button className={` border-b-2 w-full text-center p-2 text-lg`}>
                 ติดต่อ
               </button>
             </div>
             <div className='p-2 text-lg font-normal flex flex-wrap justify-center items-center gap-3 w-full'>
               <button
-                className='border border-cyan-600 text-cyan-600 p-2 flex justify-center items-center gap- text-sm rounded-lg'
+                className='border border-cyan-600 text-cyan-600 p-2 flex justify-start items-center gap-3 text-sm rounded-lg w-full max-w-[176px]'
                 onClick={() => window.open('https://lin.ee/US48sck')}
               >
                 <LineIcon />
                 <span> ติดต่อผ่านไลน์</span>
               </button>
-              <a href='tel:+0635954524'>
-                <button className='border border-cyan-600 text-cyan-600 p-2 flex justify-center items-center gap-3 text-sm rounded-lg'>
-                  <PhoneIcon /> โทร 063-595-4524
+              <a href='tel:+0635954524' className='w-full max-w-[176px]'>
+                <button className='border border-cyan-600 text-cyan-600 p-2 flex justify-start items-center gap-3 text-sm rounded-lg w-full '>
+                  <PhoneIcon /> <span>โทร 063-595-4524</span>
                 </button>
               </a>
             </div>
