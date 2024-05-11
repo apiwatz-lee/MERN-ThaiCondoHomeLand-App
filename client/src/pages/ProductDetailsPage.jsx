@@ -6,6 +6,7 @@ import {
   AiOutlineArrowRight as ArrowRight,
 } from 'react-icons/ai';
 import { FaLine as LineIcon, FaPhoneAlt as PhoneIcon } from 'react-icons/fa';
+import { FaVideo as VideoIcon } from 'react-icons/fa';
 
 const ProductDetails = () => {
   const [productDetail, setProductDetail] = useState([]);
@@ -47,6 +48,7 @@ const ProductDetails = () => {
       {!isLoading && productDetail.length > 0 && (
         <div className='font-poppins w-full flex flex-col xl:flex-row xl:items-start justify-center gap-10 lg:gap-32 '>
           {/* Image section */}
+
           <div className='relative flex max-w-screen-lg justify-center items-center'>
             <ArrowLeft
               className='absolute top-[50%] left-0 text-2xl cursor-pointer z-20 text-white rounded-full bg-opacity-50 bg-slate-300 p-2 w-12 h-12'
@@ -78,6 +80,19 @@ const ProductDetails = () => {
                   </div>
                 );
               })}
+
+            {/* Tiktok link */}
+            {productDetail[0]?.link && (
+              <div
+                className='absolute top-0 right-0 text-sm cursor-pointer border flex items-center bg-gray-300 bg-opacity-60 p-1 rounded-xl gap-1 '
+                onClick={() => window.open(`${productDetail[0]?.link}`)}
+              >
+                <VideoIcon className='p-1 text-red-600 text-3xl rounded-lg' />
+                <div className='animate-bounce text-red-600 font-bold'>
+                  Live
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Description Panel */}
@@ -139,8 +154,9 @@ const ProductDetails = () => {
               </div>
             )}
 
+            {/* Contact Panel Desktop */}
             {tab === 'contact' && (
-              <div className='p-10 text-lg font-normal flex justify-center items-center gap-3 w-full'>
+              <div className='p-10 text-lg font-normal flex justify-center items-center flex-wrap gap-3 w-full'>
                 <button
                   className='border border-cyan-600 text-cyan-600 p-2 px-4 flex justify-center items-center gap-3 rounded-lg'
                   onClick={() => window.open('https://lin.ee/US48sck')}
