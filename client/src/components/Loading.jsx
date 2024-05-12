@@ -14,8 +14,10 @@ const Loading = () => {
 
   useEffect(() => {
     if (isLoading) {
+      document.body.style.overflow = 'hidden';
       onOpen();
     } else {
+      document.body.style = 'none';
       onClose();
     }
   }, [isLoading]);
