@@ -5,10 +5,12 @@ const Pagination = () => {
 
   const handlePrevious = () => {
     setPage((prev) => (prev !== 1 ? prev - 1 : prev));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNext = () => {
     setPage((prev) => (prev !== totalPage ? prev + 1 : prev));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
