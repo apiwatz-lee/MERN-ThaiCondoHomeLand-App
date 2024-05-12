@@ -100,7 +100,7 @@ const UploadProductPage = () => {
         status: selectStatus,
         name: name,
         code: code,
-        fullPrice: fullPrice,
+        fullPrice: fullPrice.split(',').join(''),
         price: price,
         description: description,
         link: link,

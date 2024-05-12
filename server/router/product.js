@@ -119,8 +119,12 @@ productRouter.post('/upload', avatarUpload, async (req, res) => {
 productRouter.put('/upload/:id', async (req, res) => {
   try {
     const productId = new ObjectId(req.params.id);
+
+    const { fullPrice, price, ...rest } = req.body;
     const updateProducts = {
-      ...req.body,
+      ...rest,
+      fullPrice: Number(fullPrice),
+      price: Number(price),
       updated_at: new Date(),
     };
 

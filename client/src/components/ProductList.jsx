@@ -167,9 +167,11 @@ const ProductList = () => {
                 </div>
                 <p className='text-end text-xs pr-2 line-through text-gray-400'>
                   {item?.status !== 'ปิดการขาย' &&
-                    item?.fullPrice &&
+                    item?.fullPrice !== '' &&
+                    item?.fullPrice !== item?.price &&
                     `${formatNumber(item?.fullPrice)}฿`}
                 </p>
+
                 <p
                   className={`text-right pb-4 pr-4 font-semibold ${
                     item?.status === 'ยังอยู่'
@@ -181,7 +183,7 @@ const ProductList = () => {
                 >
                   {item?.status !== 'ปิดการขาย' &&
                     item?.price &&
-                    `${formatNumber(item.price)} ฿`}
+                    `${formatNumber(item?.price)} ฿`}
                 </p>
               </section>
             ) : (
