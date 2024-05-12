@@ -50,7 +50,7 @@ function App() {
                 element={<ProductDetailsPage />}
               />
               <Route path='/register' element={<RegisterPage />} />
-              <Route path='/login' element={<LoginPage />} />
+              {/* <Route path='/login' element={<LoginPage />} /> */}
               <Route path='*' element={<PageNotFoud />} />
             </>
           )}

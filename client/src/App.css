@@ -9,3 +9,7 @@ html {
 .chakra-breadcrumb__link {
   white-space: pre-wrap;
 }
+
+.breadcrump-upload {
+  width: 100%;
+}

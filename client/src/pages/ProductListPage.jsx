@@ -8,6 +8,7 @@ import ImageSlider from '../components/ImageSlider';
 import { useApp } from '../context/AppContext';
 import FilterZone from '../components/FilterZone';
 import ModalFilter from '../components/ModalFilter';
+
 const ProductListPage = () => {
   const {
     isUploadCompleted,

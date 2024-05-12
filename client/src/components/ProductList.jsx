@@ -26,6 +26,7 @@ const ProductList = () => {
     isResetFilter,
     setIsResetFilter,
   } = useApp();
+
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const server = import.meta.env.VITE_API;
@@ -80,8 +81,8 @@ const ProductList = () => {
 
     const delayDebounceFn = setTimeout(() => {
       fetchProducts();
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, 500);
+      // window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 1000);
 
     return () => clearTimeout(delayDebounceFn);
   }, [keyword]);

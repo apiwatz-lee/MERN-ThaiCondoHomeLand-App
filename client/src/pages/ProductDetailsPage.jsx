@@ -56,7 +56,7 @@ const ProductDetails = () => {
         <>
           {productDetail[0]?.name && (
             <Breadcrumb
-              class='flex flex-wrap'
+              class='breadcrump-productDetail'
               spacing='5px'
               separator={<FaChevronRight className='text-cyan-700' />}
             >

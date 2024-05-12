@@ -6,6 +6,13 @@ import Loading from '../components/Loading';
 import Form from '../components/Form';
 import { useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@chakra-ui/react';
+import { FaChevronRight } from 'react-icons/fa';
 
 const UploadProductPage = () => {
   const {
@@ -198,6 +205,19 @@ const UploadProductPage = () => {
   return (
     <>
       <main className='font-poppins flex flex-col items-center gap-5 container mx-auto'>
+        <Breadcrumb
+          class='breadcrump-upload'
+          spacing='5px'
+          separator={<FaChevronRight className='text-cyan-700' />}
+        >
+          <BreadcrumbItem>
+            <BreadcrumbLink href='/'>หน้าแรก</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem isCurrentPage className='text-gray-400 truncate'>
+            <BreadcrumbLink href='#'>อัพโหลด</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
         <h1 className='text-3xl font-medium pt-5 text-center sm:text-left w-full'>
           Upload Product
         </h1>
