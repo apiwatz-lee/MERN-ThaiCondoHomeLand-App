@@ -1,13 +1,16 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/Authentication';
 import { FaBars as HamburgerIcon, FaTimes as CancelIcon } from 'react-icons/fa';
 import { CiLogout as LogoutIcon, CiLogin as LoginIcon } from 'react-icons/ci';
 import { useApp } from '../context/AppContext';
+import { useModal } from '../context/ModalContext/state';
 
 const NavBarDrawer = ({ toggleMenu, isOpen, setIsOpen, anchor }) => {
   const { setKeyword } = useApp();
   const { logout, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const {
+    loginModal: { setModalLogin },
+  } = useModal();
 
   const handleLogout = () => {
     setKeyword('');
@@ -57,7 +60,7 @@ const NavBarDrawer = ({ toggleMenu, isOpen, setIsOpen, anchor }) => {
             <div
               className='flex items-center w-[200px] gap-5  justify-between p-2 text-white font-bold hover:bg-gray-600 duration-300 rounded-lg'
               onClick={() => {
-                navigate('/login');
+                setModalLogin((prev) => ({ ...prev, visible: true }));
                 setIsOpen(false);
               }}
             >
