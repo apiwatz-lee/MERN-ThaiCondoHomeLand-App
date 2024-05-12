@@ -11,12 +11,14 @@ import RegisterPage from './pages/RegisterPage';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import Modal from './components/Modal/Modal';
 
 function App() {
   const { isAuthenticated } = useAuth();
 
   return (
     <>
+      <Modal />
       <NavBar />
       <div className='container mx-auto p-8'>
         <Routes>

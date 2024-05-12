@@ -8,6 +8,7 @@ import { IoCloudUploadOutline as UploadIcon } from 'react-icons/io5';
 import logo from '../assets/img/logo.png';
 import { useApp } from '../context/AppContext';
 import NavBarDrawer from './NavBarDrawer';
+import { useModal } from '../context/ModalContext/state';
 
 export default function NavBar() {
   // state
@@ -19,9 +20,12 @@ export default function NavBar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { logout, isAuthenticated, state } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
 
   const { setKeyword } = useApp();
+  const {
+    loginModal: { setModalLogin },
+  } = useModal();
 
   let anchor;
   let name;
@@ -153,7 +157,10 @@ export default function NavBar() {
             ) : (
               <p
                 className='hidden lg:block cursor-pointer font-semibold hover:text-cyan-600 text-cyan-600 duration-500'
-                onClick={() => navigate('/login')}
+                // onClick={() => navigate('/login')}
+                onClick={() =>
+                  setModalLogin((prev) => ({ ...prev, visible: true }))
+                }
               >
                 Log in
               </p>

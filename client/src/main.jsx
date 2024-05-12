@@ -7,6 +7,7 @@ import jwtInterceptor from './utils/jwtInterceptors.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from './context/AppContext.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
+import { ModalProvider } from './context/ModalContext/state.jsx';
 
 jwtInterceptor();
 
@@ -15,9 +16,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <AuthProvider>
         <AppProvider>
-          <ChakraProvider>
-            <App />
-          </ChakraProvider>
+          <ModalProvider>
+            <ChakraProvider>
+              <App />
+            </ChakraProvider>
+          </ModalProvider>
         </AppProvider>
       </AuthProvider>
     </BrowserRouter>
