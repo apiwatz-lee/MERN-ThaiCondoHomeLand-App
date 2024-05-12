@@ -61,7 +61,7 @@ const ModalLogin = () => {
             }
           />
           <button
-            className='mt-7 border p-2 rounded-full text-cyan-800 font-semibold hover:bg-cyan-800 hover:text-white'
+            className='mt-10 border p-2 rounded-full bg-cyan-800 text-white font-semibold hover:bg-cyan-900 hover:text-white'
             type='submit'
             onClick={handleLogin}
           >
