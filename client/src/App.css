@@ -1,3 +1,11 @@
 html {
   scroll-behavior: smooth;
 }
+.chakra-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chakra-breadcrumb__link {
+  white-space: pre-wrap;
+}
