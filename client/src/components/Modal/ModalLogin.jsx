@@ -27,12 +27,18 @@ const ModalLogin = () => {
     }
   }, [modalLogin]);
 
-  if (!modalLogin.visible) return;
+  // if (!modalLogin.visible) return;
 
   return (
-    <div className='modal-container w-screen h-screen fixed z-40 flex justify-center items-center'>
+    <div
+      className={`modal-container w-screen h-screen fixed z-40 flex justify-center items-center duration-1000 left-0 scroll-smooth ${
+        modalLogin?.visible ? 'top-0' : 'top-[-100%]'
+      }`}
+    >
       <div
-        className='overlay w-screen h-screen fixed top-0 left-0 bg-black opacity-50'
+        className={`overlay w-screen h-screen fixed top-0 left-0 bg-black opacity-50 duration-1000 ${
+          modalLogin?.visible ? 'top-0' : 'top-[-100%]'
+        }`}
         onClick={() => setModalLogin((prev) => ({ ...prev, visible: false }))}
       ></div>
       <div className='modal-panel absolute bg-white p-11 rounded-2xl w-[280px] h-[370px]'>
