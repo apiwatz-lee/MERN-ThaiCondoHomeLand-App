@@ -167,6 +167,7 @@ const ProductList = () => {
                 </div>
                 <p className='text-end text-xs pr-2 line-through text-gray-400'>
                   {item?.status !== 'ปิดการขาย' &&
+                    item?.fullPrice &&
                     `${formatNumber(item?.fullPrice)}฿`}
                 </p>
                 <p
@@ -184,6 +185,7 @@ const ProductList = () => {
                 </p>
               </section>
             ) : (
+              // Not admin
               <section
                 className='w-[230px] h-[350px] flex flex-col justify-between rounded-2xl shadow-xl duration-300 cursor-pointer'
                 key={item?._id}
@@ -243,6 +245,11 @@ const ProductList = () => {
                     <p>{item?.district}</p>
                   </div>
                 </div>
+                <p className='text-end text-xs pr-2 line-through text-gray-400'>
+                  {item?.status !== 'ปิดการขาย' &&
+                    item?.fullPrice &&
+                    `${formatNumber(item?.fullPrice)}฿`}
+                </p>
                 <p
                   className={`text-right pb-4 pr-4 font-semibold ${
                     item?.status === 'ยังอยู่'
