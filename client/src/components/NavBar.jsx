@@ -37,7 +37,7 @@ export default function NavBar() {
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY) {
+      if (window.scrollY > lastScrollY && window.scrollY !== 0) {
         setShow(false);
       } else {
         setShow(true);
