@@ -2,78 +2,52 @@ import { IoFilter } from 'react-icons/io5';
 import { useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import axios from 'axios';
-import useFilterAssets from '../hooks/useFilterAssets';
 
 const FilterZone = () => {
   const {
-    fetchProvince,
-    district,
-    selectProvince,
-    selectDistrict,
-    setFetchProvince,
-    setDistrict,
-    setSubDistrict,
     isFilterOpen,
     setIsFilterOpen,
+    keyword,
+    setKeyword,
+    setPage,
+    setIsResetFilter,
+    filterSell,
+    setFilterSell,
+    filterAsset,
+    setFilterAsset,
+    filterProvince,
+    setFilterProvince,
+    filterDistrict,
+    setFilterDistrict,
+    filterSubDistrict,
+    setFilterSubDistrict,
+    filterStatus,
+    setFilterStatus,
   } = useApp();
 
-  const { handleResetFilter, checkIsNoFilter } = useFilterAssets();
-
-  const server = import.meta.env.VITE_API;
-
-  const fetchThaiData = async () => {
-    try {
-      const result = await axios.get(`${server}/province`);
-      const provinceOption = result.data.data.map((item) => {
-        return { id: item.id, option: item.name_th, amphure: item.amphure };
-      });
-      setFetchProvince(provinceOption);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleResetFilter = () => {
+    setFilterSell('');
+    setFilterAsset('');
+    setFilterProvince('');
+    setFilterDistrict('');
+    setFilterSubDistrict('');
+    setFilterStatus('');
+    setKeyword('');
+    setPage(1);
+    setIsResetFilter(true);
   };
 
-  const handleFindDistrict = () => {
-    const findProvince = fetchProvince.find(
-      (item) => item.option === selectProvince
+  const checkIsNoFilter = () => {
+    return (
+      !filterSell &&
+      !filterAsset &&
+      !filterProvince &&
+      !filterDistrict &&
+      !filterSubDistrict &&
+      !filterStatus &&
+      !keyword
     );
-    const eachDistrict = findProvince.amphure;
-    const districtOption = eachDistrict.map((item) => {
-      return { id: item.id, option: item.name_th, tambon: item.tambon };
-    });
-    setDistrict(districtOption);
   };
-
-  const handleFindSubDistrict = () => {
-    const findDistrict = district.find(
-      (item) => item.option === selectDistrict
-    );
-    const subDistrictOption = findDistrict?.tambon.map((item) => {
-      return { id: item.id, option: item.name_th };
-    });
-    setSubDistrict(subDistrictOption);
-  };
-
-  useEffect(() => {
-    fetchThaiData();
-    if (selectProvince) {
-      handleFindDistrict();
-    }
-  }, [selectProvince]);
-
-  useEffect(() => {
-    if (selectDistrict) {
-      handleFindSubDistrict();
-    }
-  }, [district, selectDistrict]);
-
-  useEffect(() => {
-    if (isFilterOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style = 'none';
-    }
-  }, [isFilterOpen]);
 
   return (
     <>

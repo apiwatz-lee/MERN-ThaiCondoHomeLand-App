@@ -4,16 +4,21 @@ import { createContext, useContext, useState } from 'react';
 const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
+  // Get Products API
+  const [products, setProducts] = useState([]);
+
+  // Get Thailand location module
+  const [fetchProvince, setFetchProvince] = useState([]);
+  const [district, setDistrict] = useState([]);
+  const [subDistrict, setSubDistrict] = useState([]);
+
+  // Upload module
   const [name, setName] = useState('');
   const [code, setCode] = useState('');
   const [fullPrice, setFullPrice] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [avatars, setAvatars] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [fetchProvince, setFetchProvince] = useState([]);
-  const [district, setDistrict] = useState([]);
-  const [subDistrict, setSubDistrict] = useState([]);
   const [selectProvince, setSelectProvince] = useState('');
   const [selectDistrict, setSelectDistrict] = useState('');
   const [selectSubDistrict, setSelectSubDistrict] = useState('');
@@ -22,6 +27,7 @@ const AppProvider = ({ children }) => {
   const [selectStatus, setSelectStatus] = useState('');
   const [link, setLink] = useState('');
 
+  // Alert upload toast chakra ui module
   const [isCancel, setIsCancel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -30,18 +36,29 @@ const AppProvider = ({ children }) => {
   const [isUpdatedCompleted, setIsUpdatedCompleted] = useState(false);
   const [isDeleteCompleted, setIsDeleteCompleted] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
-  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+  // Payment module
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+
+  // Cart module
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
-
-  const [keyword, setKeyword] = useState('');
   const [cart, setCart] = useState([]);
 
+  // Filter module
+  const [keyword, setKeyword] = useState('');
   const [isResetFilter, setIsResetFilter] = useState(false);
+  const [filterSell, setFilterSell] = useState('');
+  const [filterAsset, setFilterAsset] = useState('');
+  const [filterProvince, setFilterProvince] = useState('');
+  const [filterDistrict, setFilterDistrict] = useState('');
+  const [filterSubDistrict, setFilterSubDistrict] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Pagination module
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   return (
     <AppContext.Provider
@@ -114,6 +131,18 @@ const AppProvider = ({ children }) => {
         isFilterOpen,
         isResetFilter,
         setIsResetFilter,
+        filterSell,
+        setFilterSell,
+        filterAsset,
+        setFilterAsset,
+        filterProvince,
+        setFilterProvince,
+        filterDistrict,
+        setFilterDistrict,
+        filterSubDistrict,
+        setFilterSubDistrict,
+        filterStatus,
+        setFilterStatus,
       }}
     >
       {children}

@@ -7,21 +7,9 @@ import axios from 'axios';
 
 const ModalFilter = () => {
   const {
-    selectSellType,
-    setSelectSellType,
-    selectAssetType,
-    setSelectAssetType,
     fetchProvince,
     district,
     subDistrict,
-    selectProvince,
-    selectDistrict,
-    setSelectProvince,
-    setSelectDistrict,
-    setSelectSubDistrict,
-    setSelectStatus,
-    selectSubDistrict,
-    selectStatus,
     setFetchProvince,
     setDistrict,
     setSubDistrict,
@@ -31,10 +19,20 @@ const ModalFilter = () => {
     isFilterOpen,
     setIsFilterOpen,
     keyword,
-    setIsResetFilter,
-    setKeyword,
     page,
     setPage,
+    filterSell,
+    setFilterSell,
+    filterAsset,
+    setFilterAsset,
+    filterProvince,
+    setFilterProvince,
+    filterDistrict,
+    setFilterDistrict,
+    filterSubDistrict,
+    setFilterSubDistrict,
+    filterStatus,
+    setFilterStatus,
   } = useApp();
 
   const server = import.meta.env.VITE_API;
@@ -42,9 +40,11 @@ const ModalFilter = () => {
   const fetchThaiData = async () => {
     try {
       const result = await axios.get(`${server}/province`);
-      const provinceOption = result.data.data.map((item) => {
+
+      const provinceOption = result?.data?.data?.map((item) => {
         return { id: item.id, option: item.name_th, amphure: item.amphure };
       });
+
       setFetchProvince(provinceOption);
     } catch (error) {
       console.log(error);
@@ -52,23 +52,27 @@ const ModalFilter = () => {
   };
 
   const handleFindDistrict = () => {
-    // const cloneProvice = [...fetchProvince];
-    const findProvince = fetchProvince.find(
-      (item) => item.option === selectProvince
+    const cloneProvice = [...fetchProvince];
+    const findProvince = cloneProvice.find(
+      (item) => item.option === filterProvince
     );
-    const eachDistrict = findProvince.amphure;
-    const districtOption = eachDistrict.map((item) => {
+
+    const eachDistrict = findProvince?.amphure;
+
+    const districtOption = eachDistrict?.map((item) => {
       return { id: item.id, option: item.name_th, tambon: item.tambon };
     });
+
     setDistrict(districtOption);
   };
 
   const handleFindSubDistrict = () => {
-    // const cloneDistrict = [...district];
-    const findDistrict = district.find(
-      (item) => item.option === selectDistrict
+    const cloneDistrict = [...district];
+    const findDistrict = cloneDistrict.find(
+      (item) => item.option === filterDistrict
     );
-    const subDistrictOption = findDistrict?.tambon.map((item) => {
+
+    const subDistrictOption = findDistrict?.tambon?.map((item) => {
       return { id: item.id, option: item.name_th };
     });
     setSubDistrict(subDistrictOption);
@@ -78,12 +82,12 @@ const ModalFilter = () => {
     try {
       setPage(1);
       const params = new URLSearchParams();
-      params.append('sell', selectSellType);
-      params.append('asset', selectAssetType);
-      params.append('province', selectProvince);
-      params.append('district', selectDistrict);
-      params.append('subDistrict', selectSubDistrict);
-      params.append('status', selectStatus);
+      params.append('sell', filterSell);
+      params.append('asset', filterAsset);
+      params.append('province', filterProvince);
+      params.append('district', filterDistrict);
+      params.append('subDistrict', filterSubDistrict);
+      params.append('status', filterStatus);
       params.append('keyword', keyword);
       params.append('page', page);
       setIsLoading(true);
@@ -99,16 +103,16 @@ const ModalFilter = () => {
 
   useEffect(() => {
     fetchThaiData();
-    if (selectProvince) {
+    if (filterProvince) {
       handleFindDistrict();
     }
-  }, [selectProvince]);
+  }, [filterProvince]);
 
   useEffect(() => {
-    if (selectDistrict) {
+    if (filterDistrict) {
       handleFindSubDistrict();
     }
-  }, [district, selectDistrict]);
+  }, [district, filterDistrict]);
 
   useEffect(() => {
     if (isFilterOpen) {
@@ -141,8 +145,8 @@ const ModalFilter = () => {
                 title='Sell Type'
                 id='sell_type'
                 option={sellOption}
-                setSelect={setSelectSellType}
-                select={selectSellType}
+                setSelect={setFilterSell}
+                select={filterSell}
                 titleClass='text-white'
               />
               <DropDown
@@ -150,35 +154,36 @@ const ModalFilter = () => {
                 titleClass='text-white'
                 id='asset_type'
                 option={assetOption}
-                setSelect={setSelectAssetType}
-                select={selectAssetType}
+                setSelect={setFilterAsset}
+                select={filterAsset}
               />
               <DropDown
                 title='Province'
                 titleClass='text-white'
                 option={fetchProvince}
-                setSelect={setSelectProvince}
-                select={selectProvince}
+                setSelect={setFilterProvince}
+                select={filterProvince}
               />
               <DropDown
                 title='District'
                 titleClass='text-white'
                 option={district}
-                setSelect={setSelectDistrict}
+                setSelect={setFilterDistrict}
+                select={filterDistrict}
               />
               <DropDown
                 title='Sub District'
                 titleClass='text-white'
                 option={subDistrict}
-                setSelect={setSelectSubDistrict}
-                select={selectSubDistrict}
+                setSelect={setFilterSubDistrict}
+                select={filterSubDistrict}
               />
               <DropDown
                 title='Status'
                 titleClass='text-white'
                 option={statusOption}
-                setSelect={setSelectStatus}
-                select={selectStatus}
+                setSelect={setFilterStatus}
+                select={filterStatus}
               />
             </div>
 

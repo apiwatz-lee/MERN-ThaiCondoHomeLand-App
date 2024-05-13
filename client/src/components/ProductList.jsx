@@ -17,14 +17,14 @@ const ProductList = () => {
     setTotalPage,
     products,
     setProducts,
-    selectSellType,
-    selectAssetType,
-    selectProvince,
-    selectDistrict,
-    selectSubDistrict,
-    selectStatus,
     isResetFilter,
     setIsResetFilter,
+    filterSell,
+    filterAsset,
+    filterProvince,
+    filterDistrict,
+    filterSubDistrict,
+    filterStatus,
   } = useApp();
 
   const navigate = useNavigate();
@@ -37,12 +37,12 @@ const ProductList = () => {
       const params = new URLSearchParams();
       params.append('keyword', keyword);
       params.append('page', page);
-      params.append('sell', selectSellType);
-      params.append('asset', selectAssetType);
-      params.append('province', selectProvince);
-      params.append('district', selectDistrict);
-      params.append('subDistrict', selectSubDistrict);
-      params.append('status', selectStatus);
+      params.append('sell', filterSell);
+      params.append('asset', filterAsset);
+      params.append('province', filterProvince);
+      params.append('district', filterDistrict);
+      params.append('subDistrict', filterSubDistrict);
+      params.append('status', filterStatus);
       setIsLoading(true);
       const result = await axios.get(`${server}/product?${params.toString()}`);
       setProducts(result?.data?.data);
