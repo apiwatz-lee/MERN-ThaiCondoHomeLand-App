@@ -84,7 +84,7 @@ productRouter.get('/:id', async (req, res) => {
   }
 });
 
-productRouter.post('/upload', avatarUpload, async (req, res) => {
+productRouter.post('/upload', protect, avatarUpload, async (req, res) => {
   try {
     const products = {
       sell: req.body.sell,
@@ -116,7 +116,7 @@ productRouter.post('/upload', avatarUpload, async (req, res) => {
   }
 });
 
-productRouter.put('/upload/:id', async (req, res) => {
+productRouter.put('/upload/:id', protect, async (req, res) => {
   try {
     const productId = new ObjectId(req.params.id);
 
@@ -139,7 +139,7 @@ productRouter.put('/upload/:id', async (req, res) => {
   }
 });
 
-productRouter.delete('/:id', async (req, res) => {
+productRouter.delete('/:id', protect, async (req, res) => {
   try {
     const productId = new ObjectId(req.params.id);
 
