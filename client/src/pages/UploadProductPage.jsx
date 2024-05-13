@@ -218,9 +218,11 @@ const UploadProductPage = () => {
             <BreadcrumbLink href='#'>อัพโหลด</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumb>
-        <h1 className='text-3xl font-medium pt-5 text-center sm:text-left w-full'>
+
+        {/* <h1 className='text-3xl font-medium pt-5 text-center sm:text-left w-full'>
           Upload Product
-        </h1>
+        </h1> */}
+
         <section className='flex flex-col justify-center items-center w-[90%]'>
           <Form params={params} />
           <ProductConfirmation
