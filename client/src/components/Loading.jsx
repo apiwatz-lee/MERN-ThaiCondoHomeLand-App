@@ -22,6 +22,8 @@ const Loading = () => {
     }
   }, [isLoading]);
 
+  if (!isLoading) return;
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered={true}>
       <ModalOverlay />
