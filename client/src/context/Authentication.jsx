@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
       isClosable: true,
       position: 'top',
     });
+
     navigate('/login');
   };
 
@@ -40,6 +41,7 @@ const AuthProvider = ({ children }) => {
       setState({ ...state, user: userDataFromToken });
       // navigate('/');
       window.location.replace(window.location.origin); //to fix state unclear value
+
       toast({
         title: 'Login successfully',
         description: `Hello ${userDataFromToken.firstname}, Have a good day!`,
@@ -71,6 +73,7 @@ const AuthProvider = ({ children }) => {
     setState({ ...state, user: null });
     // navigate('/');
     window.location.replace(window.location.origin); //to fix state unclear value
+
     toast({
       title: 'Logout successfully.',
       description: `Hey ${name}, See you around!`,

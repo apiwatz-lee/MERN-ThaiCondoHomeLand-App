@@ -98,7 +98,6 @@ const ProductListPage = () => {
         <SearchBar />
         <FilterZone />
         <ProductList />
-        <Loading />
         <Pagination />
       </div>
     </div>

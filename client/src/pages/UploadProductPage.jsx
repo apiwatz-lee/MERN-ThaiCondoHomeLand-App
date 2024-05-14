@@ -189,8 +189,10 @@ const UploadProductPage = () => {
     const fetchData = async () => {
       try {
         if (params?.id) {
+          setIsLoading(true);
           await fetchThaiData();
           await getProductById();
+          setIsLoading(false);
         } else {
           handleClearValue();
         }

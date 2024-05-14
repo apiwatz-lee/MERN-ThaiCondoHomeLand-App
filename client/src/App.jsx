@@ -12,6 +12,7 @@ import CheckoutSuccess from './pages/CheckoutSuccess';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Modal from './components/Modal/Modal';
+import Loading from './components/Loading';
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <Modal />
+      <Loading />
       <NavBar />
       <div className='container mx-auto p-8'>
         <Routes>
