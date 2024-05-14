@@ -189,10 +189,8 @@ const UploadProductPage = () => {
     const fetchData = async () => {
       try {
         if (params?.id) {
-          setIsLoading(true);
           await fetchThaiData();
           await getProductById();
-          setIsLoading(false);
         } else {
           handleClearValue();
         }
@@ -221,10 +219,6 @@ const UploadProductPage = () => {
           </BreadcrumbItem>
         </Breadcrumb>
 
-        {/* <h1 className='text-3xl font-medium pt-5 text-center sm:text-left w-full'>
-          Upload Product
-        </h1> */}
-
         <section className='flex flex-col justify-center items-center w-[90%]'>
           <Form params={params} />
           <ProductConfirmation
@@ -232,7 +226,6 @@ const UploadProductPage = () => {
             handleUpdate={handleUpdate}
             handleDelete={handleDelete}
           />
-          <Loading />
         </section>
       </main>
     </>
