@@ -1,6 +1,7 @@
 import { useModal } from '../../context/ModalContext/state';
 import { useAuth } from '../../context/Authentication';
 import { useEffect } from 'react';
+import { IoMdClose as IconClose } from 'react-icons/io';
 
 const ModalLogin = () => {
   const {
@@ -12,22 +13,22 @@ const ModalLogin = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const data = {
-      username: modalLogin.username,
-      password: modalLogin.password,
+      username: modalLogin?.username,
+      password: modalLogin?.password,
     };
     login(data);
     setModalLogin(initialLogin);
   };
 
   useEffect(() => {
-    if (modalLogin.visible) {
+    if (modalLogin?.visible) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style = 'none';
     }
   }, [modalLogin]);
 
-  if (!modalLogin.visible) return;
+  if (!modalLogin?.visible) return;
 
   return (
     <div
@@ -38,6 +39,10 @@ const ModalLogin = () => {
         onClick={() => setModalLogin((prev) => ({ ...prev, visible: false }))}
       ></div>
       <div className='modal-panel absolute bg-white p-11 rounded-2xl w-[280px] h-[370px]'>
+        <IconClose
+          className='absolute z-10 cursor-pointer top-4 right-5 text-xl text-gray-300'
+          onClick={() => setModalLogin((prev) => ({ ...prev, visible: false }))}
+        />
         <h1 className='text-center text-cyan-800 text-xl font-semibold'>
           Admin Login
         </h1>

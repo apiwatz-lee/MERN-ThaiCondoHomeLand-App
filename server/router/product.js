@@ -6,7 +6,6 @@ import multer from 'multer';
 import { protect } from '../middlewares/protect.js';
 
 const productRouter = Router();
-// productRouter.use(protect)
 
 const multerUpload = multer({ dest: 'public\\files' });
 const avatarUpload = multerUpload.fields([{ name: 'avatar', maxCount: 6 }]);
@@ -57,17 +56,6 @@ productRouter.get('/', async (req, res) => {
       const totalPages = Math.ceil(count / PAGE_SIZE);
       return res.status(200).json({ data: products, total_pages: totalPages });
     }
-    // else {
-    //   const collection = db.collection('products');
-    //   const products = await collection
-    //     .find(query)
-    //     .skip(skip)
-    //     .limit(10)
-    //     .toArray();
-    //   const count = await collection.countDocuments(query);
-    //   const totalPages = Math.ceil(count / PAGE_SIZE);
-    //   return res.status(200).json({ data: products, total_pages: totalPages });
-    // }
   } catch (error) {
     return res.status(400).json({ error: error });
   }
