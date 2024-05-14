@@ -7,7 +7,6 @@ import Pagination from '../components/Pagination';
 import ImageSlider from '../components/ImageSlider';
 import { useApp } from '../context/AppContext';
 import FilterZone from '../components/FilterZone';
-import ModalFilter from '../components/ModalFilter';
 
 const ProductListPage = () => {
   const {
@@ -98,7 +97,6 @@ const ProductListPage = () => {
         </h1>
         <SearchBar />
         <FilterZone />
-        <ModalFilter />
         <ProductList />
         <Loading />
         <Pagination />
