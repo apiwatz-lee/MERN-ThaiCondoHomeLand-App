@@ -252,6 +252,7 @@ const ProductList = () => {
                 <p className='text-end text-xs pr-2 line-through text-gray-400'>
                   {item?.status !== 'ปิดการขาย' &&
                     item?.fullPrice !== '' &&
+                    item?.fullPrice !== 0 &&
                     item?.fullPrice !== item?.price &&
                     `${formatNumber(item?.fullPrice)}฿`}
                 </p>
