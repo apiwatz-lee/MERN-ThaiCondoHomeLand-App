@@ -60,6 +60,18 @@ const AppProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null); //initial state to null for validate button "กลับสู่หน้าแรก" as for pagination
 
+  const checkIsNoFilter = () => {
+    return (
+      !filterSell &&
+      !filterAsset &&
+      !filterProvince &&
+      !filterDistrict &&
+      !filterSubDistrict &&
+      !filterStatus &&
+      !keyword
+    );
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -143,6 +155,7 @@ const AppProvider = ({ children }) => {
         setFilterSubDistrict,
         filterStatus,
         setFilterStatus,
+        checkIsNoFilter,
       }}
     >
       {children}

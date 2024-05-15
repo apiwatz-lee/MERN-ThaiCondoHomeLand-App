@@ -23,6 +23,7 @@ const FilterZone = () => {
     setFilterSubDistrict,
     filterStatus,
     setFilterStatus,
+    checkIsNoFilter,
   } = useApp();
 
   const handleResetFilter = () => {
@@ -35,18 +36,6 @@ const FilterZone = () => {
     setKeyword('');
     setPage(1);
     setIsResetFilter(true);
-  };
-
-  const checkIsNoFilter = () => {
-    return (
-      !filterSell &&
-      !filterAsset &&
-      !filterProvince &&
-      !filterDistrict &&
-      !filterSubDistrict &&
-      !filterStatus &&
-      !keyword
-    );
   };
 
   return (

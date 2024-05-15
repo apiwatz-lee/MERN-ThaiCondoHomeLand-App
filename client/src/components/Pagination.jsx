@@ -1,7 +1,7 @@
 import { useApp } from '../context/AppContext';
 
 const Pagination = () => {
-  const { page, setPage, totalPage } = useApp();
+  const { page, setPage, totalPage, checkIsNoFilter } = useApp();
 
   const handlePrevious = () => {
     setPage((prev) => (prev !== 1 ? prev - 1 : prev));
@@ -44,7 +44,7 @@ const Pagination = () => {
         </div>
       )}
 
-      {page === totalPage && (
+      {page === totalPage && checkIsNoFilter() && (
         <button
           className='text-cyan-700 underline text-[15px]'
           onClick={() => setPage(1)}
