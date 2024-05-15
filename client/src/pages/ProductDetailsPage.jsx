@@ -14,14 +14,16 @@ import {
   BreadcrumbSeparator,
 } from '@chakra-ui/react';
 import { FaChevronRight } from 'react-icons/fa';
+import { useApp } from '../context/AppContext';
 
 const ProductDetails = () => {
   const [productDetail, setProductDetail] = useState([]);
   const [tab, setTab] = useState('description');
-  const [isLoading, setIsLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const params = useParams();
   const server = import.meta.env.VITE_API;
+
+  const { isLoading, setIsLoading } = useApp();
 
   const getProductById = async () => {
     try {

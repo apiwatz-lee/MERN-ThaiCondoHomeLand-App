@@ -200,6 +200,7 @@ const UploadProductPage = () => {
     };
 
     fetchData();
+    setIsLoading(false);
   }, [params?.id]);
 
   return (

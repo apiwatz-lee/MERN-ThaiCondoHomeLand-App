@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
 
   // Alert upload toast chakra ui module
   const [isCancel, setIsCancel] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isSubmit, setIsSubmit] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isUploadCompleted, setIsUploadCompleted] = useState(false);
@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
 
   // Pagination module
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(1);
 
   return (
     <AppContext.Provider
