@@ -16,7 +16,7 @@ const Pagination = () => {
   return (
     <>
       {totalPage > 1 && (
-        <div className='flex flex-col sm:flex-row w-auto justify-center items-center gap-10 pb-10'>
+        <div className='flex flex-col sm:flex-row w-auto justify-center items-center gap-10'>
           <button
             className={`p-3 rounded-full w-32 bg-slate-100 hover:bg-neutral-100 duration-300 ${
               page === 1 && 'text-gray-300 cursor-no-drop'
@@ -33,15 +33,24 @@ const Pagination = () => {
           </p>
 
           <button
-            className={`p-3 rounded-full w-32 bg-slate-100 hover:bg-neutral-100 duration-300 ${
-              page === totalPage && 'text-gray-300 cursor-no-drop'
-            }`}
+            className={`p-3 rounded-full w-32 bg-slate-100 hover:bg-neutral-100 duration-300 
+            ${page === totalPage && 'text-gray-300 cursor-no-drop'}
+            `}
             type='button'
-            onClick={handleNext}
+            onClick={page === totalPage ? () => setPage(1) : handleNext}
           >
             Next
           </button>
         </div>
+      )}
+
+      {page === totalPage && (
+        <button
+          className='text-cyan-700 underline text-[15px]'
+          onClick={() => setPage(1)}
+        >
+          กลับสู่หน้าแรก
+        </button>
       )}
     </>
   );
