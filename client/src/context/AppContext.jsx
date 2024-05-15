@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
 
   // Pagination module
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(null); //initial state to null for validate button "กลับสู่หน้าแรก" as for pagination
 
   return (
     <AppContext.Provider
