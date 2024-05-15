@@ -14,6 +14,21 @@ import Loading from './components/Loading';
 function App() {
   const { isAuthenticated } = useAuth();
 
+  const route = isAuthenticated
+    ? [
+        { path: '/', element: <ProductListPage /> },
+        { path: '/product/upload', element: <UploadProductPage /> },
+        { path: '/product/upload/:id', element: <UploadProductPage /> },
+        { path: '/product/detail/:id', element: <ProductDetailsPage /> },
+        { path: '*', element: <PageNotFoud /> },
+      ]
+    : [
+        { path: '/', element: <ProductListPage /> },
+        { path: '/product/detail/:id', element: <ProductDetailsPage /> },
+        // { path: '/register', element: <RegisterPage /> },
+        { path: '*', element: <PageNotFoud /> },
+      ];
+
   return (
     <>
       <Modal />
@@ -21,31 +36,9 @@ function App() {
       <NavBar />
       <div className='container mx-auto p-8'>
         <Routes>
-          {isAuthenticated ? (
-            <>
-              <Route path='/' element={<ProductListPage />} />
-              <Route path='/product/upload/' element={<UploadProductPage />} />
-              <Route
-                path='/product/upload/:id'
-                element={<UploadProductPage />}
-              />
-              <Route
-                path='/product/detail/:id'
-                element={<ProductDetailsPage />}
-              />
-              <Route path='*' element={<PageNotFoud />} />
-            </>
-          ) : (
-            <>
-              <Route path='/' element={<ProductListPage />} />
-              <Route
-                path='/product/detail/:id'
-                element={<ProductDetailsPage />}
-              />
-              <Route path='/register' element={<RegisterPage />} />
-              <Route path='*' element={<PageNotFoud />} />
-            </>
-          )}
+          {route.map((item, index) => (
+            <Route path={item?.path} element={item?.element} key={index} />
+          ))}
         </Routes>
       </div>
       <Footer />

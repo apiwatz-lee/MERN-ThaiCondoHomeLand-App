@@ -1,4 +1,13 @@
+import { useApp } from '../context/AppContext';
+import { useEffect } from 'react';
+
 const PageNotFoud = () => {
+  const { setIsLoading } = useApp();
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <div className='flex justify-center items-center h-[60vh] flex-col'>
       <h1 className='text-7xl text-gray-500 font-medium'>404</h1>
