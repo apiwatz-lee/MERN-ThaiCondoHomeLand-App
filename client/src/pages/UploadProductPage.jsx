@@ -84,8 +84,7 @@ const UploadProductPage = () => {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setIsLoading(false);
-      window.location.replace(window.location.origin); //to fix state unclear value
-      // navigate('/');
+      navigate('/');
       setIsUploadCompleted(true);
     } catch (error) {
       console.log(error);
@@ -115,8 +114,7 @@ const UploadProductPage = () => {
       };
       await axios.put(`${server}/product/upload/${params.id}`, data);
       setIsLoading(false);
-      window.location.replace(window.location.origin);
-      // navigate('/');
+      navigate('/');
       setIsUpdatedCompleted(true);
     } catch (error) {
       console.log(error);
@@ -131,7 +129,7 @@ const UploadProductPage = () => {
       await axios.delete(`${server}/product/${params.id}`);
       setIsDeleteCompleted(true);
       setIsLoading(false);
-      window.location.replace(window.location.origin); //to fix state unclear value
+      navigate('/');
     } catch (error) {
       console.log(error);
     }

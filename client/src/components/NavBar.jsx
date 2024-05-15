@@ -129,7 +129,7 @@ export default function NavBar() {
         {/* Logo */}
         <div
           className='hidden lg:flex flex-col justify-center items-center gap-2 cursor-pointer'
-          onClick={() => window.location.replace(window.location.origin)} //to fix state unclear value
+          onClick={() => navigate('/')} //to fix state unclear value
         >
           <img src={logo} alt='logo' className='w-12' />
           <p className='tracking-widest font-medium hidden sm:block'>

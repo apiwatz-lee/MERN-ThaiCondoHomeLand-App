@@ -286,7 +286,7 @@ const Form = ({ params }) => {
             className='border p-3 rounded-full w-28 sm:w-56 bg-white text-cyan-800 hover:bg-gray-200 hover:text-black duration-300'
             type='reset'
             title='Cancel'
-            onClick={() => window.location.replace(window.location.origin)} //to fix state unclear value
+            onClick={() => navigate('/')} //to fix state unclear value
           />
           <Button
             className='border p-3 rounded-full w-28 sm:w-56 text-white bg-cyan-800 hover:bg-cyan-700 duration-300'
