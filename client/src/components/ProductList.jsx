@@ -76,15 +76,16 @@ const ProductList = () => {
   useEffect(() => {
     const handleKeyword = () => {
       //if user start to search by keywords, program will first set page to 1 in order to send to backend
-      if (keyword || keyword === '') {
+      if (keyword) {
         setPage(1);
-        const delayDebounceFn = setTimeout(() => {
-          fetchProducts();
-          // window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        }, 1000);
-
-        return () => clearTimeout(delayDebounceFn);
       }
+
+      const delayDebounceFn = setTimeout(() => {
+        fetchProducts();
+        // window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }, 1000);
+
+      return () => clearTimeout(delayDebounceFn);
     };
 
     handleKeyword();
