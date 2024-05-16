@@ -25,6 +25,7 @@ const Pagination = () => {
             className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700 ${
               page === 1 && 'text-gray-300 cursor-no-drop'
             }`}
+            disabled={page === 1}
             type='button'
             onClick={handlePrevious}
           >
@@ -39,8 +40,9 @@ const Pagination = () => {
             className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700
             ${page === totalPage && 'text-gray-300 cursor-no-drop'}
             `}
+            disabled={page === totalPage}
             type='button'
-            onClick={page === totalPage ? () => setPage(1) : handleNext}
+            onClick={handleNext}
           >
             <IconRight />
           </button>

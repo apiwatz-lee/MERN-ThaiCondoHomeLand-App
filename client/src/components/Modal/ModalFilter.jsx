@@ -41,7 +41,7 @@ const ModalFilter = () => {
       const result = await axios.get(`${server}/province`);
 
       const provinceOption = result?.data?.data?.map((item) => {
-        return { id: item.id, option: item.name_th, amphure: item.amphure };
+        return { id: item?.id, option: item?.name_th, amphure: item?.amphure };
       });
 
       setFetchProvince(provinceOption);

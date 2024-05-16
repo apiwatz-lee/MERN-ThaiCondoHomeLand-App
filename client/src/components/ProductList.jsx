@@ -98,7 +98,11 @@ const ProductList = () => {
     };
 
     handleFetchData();
-  }, [page, isResetFilter]);
+
+    //page -- when handle page
+    //total page -- when filter
+    //isResetFilter -- when reset filter
+  }, [page, totalPage, isResetFilter]);
 
   useEffect(() => {
     handleAuth();
