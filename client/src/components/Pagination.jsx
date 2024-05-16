@@ -1,4 +1,8 @@
 import { useApp } from '../context/AppContext';
+import {
+  FaArrowRight as IconRight,
+  FaArrowLeft as IconLeft,
+} from 'react-icons/fa';
 
 const Pagination = () => {
   const { page, setPage, totalPage, checkIsNoFilter } = useApp();
@@ -16,30 +20,29 @@ const Pagination = () => {
   return (
     <>
       {totalPage > 1 && (
-        <div className='flex flex-col sm:flex-row w-auto justify-center items-center gap-10'>
+        <div className='flex sm:flex-row w-auto justify-center items-center gap-10'>
           <button
-            className={`p-3 rounded-full w-32 bg-slate-100 hover:bg-neutral-100 duration-300 ${
+            className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700 ${
               page === 1 && 'text-gray-300 cursor-no-drop'
             }`}
             type='button'
             onClick={handlePrevious}
           >
-            Previous
+            <IconLeft />
           </button>
 
           <p>
-            {' '}
-            {page} of {totalPage}
+            {page} / {totalPage}
           </p>
 
           <button
-            className={`p-3 rounded-full w-32 bg-slate-100 hover:bg-neutral-100 duration-300 
+            className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700
             ${page === totalPage && 'text-gray-300 cursor-no-drop'}
             `}
             type='button'
             onClick={page === totalPage ? () => setPage(1) : handleNext}
           >
-            Next
+            <IconRight />
           </button>
         </div>
       )}
