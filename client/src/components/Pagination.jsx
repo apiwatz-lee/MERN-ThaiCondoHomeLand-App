@@ -22,8 +22,8 @@ const Pagination = () => {
       {totalPage > 1 && (
         <div className='flex sm:flex-row w-auto justify-center items-center gap-10'>
           <button
-            className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700 ${
-              page === 1 && 'text-gray-300 cursor-no-drop'
+            className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700 hover:scale-125 ${
+              page === 1 && 'text-gray-300 cursor-no-drop hover:scale-100'
             }`}
             disabled={page === 1}
             type='button'
@@ -37,8 +37,11 @@ const Pagination = () => {
           </p>
 
           <button
-            className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700
-            ${page === totalPage && 'text-gray-300 cursor-no-drop'}
+            className={`p-3 rounded-full bg-slate-100 active:bg-slate-300 hover:bg-neutral-100 duration-300 text-cyan-700 hover:scale-125
+            ${
+              page === totalPage &&
+              'text-gray-300 cursor-no-drop hover:scale-100'
+            }
             `}
             disabled={page === totalPage}
             type='button'
@@ -51,7 +54,7 @@ const Pagination = () => {
 
       {page === totalPage && checkIsNoFilter() && (
         <button
-          className='text-cyan-700 underline text-[15px]'
+          className='text-cyan-700 underline text-[15px] '
           onClick={() => setPage(1)}
         >
           back to home
