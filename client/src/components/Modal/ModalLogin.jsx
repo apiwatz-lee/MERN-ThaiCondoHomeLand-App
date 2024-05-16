@@ -58,7 +58,7 @@ const ModalLogin = () => {
           />
           <div className='mt-5'>Password</div>
           <input
-            className='border rounded-full py-1 px-3 mt-2 h10 outline-none'
+            className='border rounded-full py-1 px-3 mt-2 h-10 outline-none'
             type='password'
             value={modalLogin?.password}
             onChange={(e) =>
