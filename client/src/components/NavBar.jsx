@@ -99,7 +99,7 @@ export default function NavBar() {
       {/* Desktop */}
       {/* Nav Container */}
       <nav
-        className={` flex justify-between items-center lg:text-base py-5 px-14 sm:px-28 mb-5 sticky top-0 z-30 bg-neutral-100 transition-transform duration-500 transform ${
+        className={` flex justify-between items-center lg:text-base py-5 px-14 sm:px-28 mb-5 sticky top-0 z-30 bg-neutral-100 transition-transform duration-500 transform backdrop-blur bg-opacity-80 ${
           show ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
