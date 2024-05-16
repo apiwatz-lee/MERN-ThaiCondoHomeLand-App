@@ -49,7 +49,7 @@ const Pagination = () => {
           className='text-cyan-700 underline text-[15px]'
           onClick={() => setPage(1)}
         >
-          กลับสู่หน้าแรก
+          back to home
         </button>
       )}
     </>

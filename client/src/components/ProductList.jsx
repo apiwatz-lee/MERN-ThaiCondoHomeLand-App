@@ -92,7 +92,7 @@ const ProductList = () => {
 
   useEffect(() => {
     const handleFetchData = async () => {
-      await setIsLoading(true);
+      // await setIsLoading(true); //comment because avoid loading when page change
       await fetchProducts();
       await setIsLoading(false);
     };
