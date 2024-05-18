@@ -1,62 +1,63 @@
+import Customer1 from '../assets/img/Customer1.jpg';
+import Customer2 from '../assets/img/Customer2.jpg';
+import Customer3 from '../assets/img/Customer3.jpg';
+import Customer4 from '../assets/img/Customer4.jpg';
+import Customer5 from '../assets/img/Customer5.jpg';
+import Customer6 from '../assets/img/Customer6.jpg';
+import Customer7 from '../assets/img/Customer7.jpg';
+import Customer8 from '../assets/img/Customer8.jpg';
+import Customer9 from '../assets/img/Customer9.jpg';
+import Customer10 from '../assets/img/Customer10.jpg';
+import Customer11 from '../assets/img/Customer11.jpg';
+import Customer12 from '../assets/img/Customer12.jpg';
+
 export const customers = [
   {
     id: 1,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135587/thaicondo/customers/7_jmzwu5.jpg',
+    image: Customer1,
   },
   {
     id: 2,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135587/thaicondo/customers/5_p4bsfs.jpg',
+    image: Customer2,
   },
   {
     id: 3,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135587/thaicondo/customers/1_yxk6iw.jpg',
+    image: Customer3,
   },
   {
     id: 4,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135588/thaicondo/customers/11_i2ttir.jpg',
+    image: Customer4,
   },
   {
     id: 5,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135588/thaicondo/customers/4_tyipgc.jpg',
+    image: Customer5,
   },
   {
     id: 6,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135591/thaicondo/customers/21_nxi5xz.jpg',
+    image: Customer6,
   },
   {
     id: 7,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135588/thaicondo/customers/8_a55re3.jpg',
+    image: Customer7,
   },
   {
     id: 8,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135588/thaicondo/customers/9_ymuvlf.jpg',
+    image: Customer8,
   },
   {
     id: 9,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135589/thaicondo/customers/17_db3xiy.jpg',
+    image: Customer9,
   },
   {
     id: 10,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135590/thaicondo/customers/20_madkym.jpg',
+    image: Customer10,
   },
   {
     id: 11,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135590/thaicondo/customers/12_fw9bfg.jpg',
+    image: Customer11,
   },
   {
     id: 12,
-    image:
-      'https://res.cloudinary.com/djxinfb0i/image/upload/v1705135589/thaicondo/customers/13_mua8dj.jpg',
+    image: Customer12,
   },
 ];

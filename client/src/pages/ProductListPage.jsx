@@ -4,9 +4,9 @@ import { useToast } from '@chakra-ui/react';
 import SearchBar from '../components/SearchBar';
 import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
-import ImageSlider from '../components/ImageSlider';
 import { useApp } from '../context/AppContext';
 import FilterZone from '../components/FilterZone';
+import ImageSlider from '../components/ImageSlider';
 
 const ProductListPage = () => {
   const {
