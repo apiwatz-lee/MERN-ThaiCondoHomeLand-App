@@ -37,12 +37,12 @@ const ImageSlider = () => {
 
   return (
     <div>
-      <Slider {...settings} className='rounded-xl'>
+      <Slider {...settings}>
         {customers.map((item, index) => (
           <div key={index}>
             <img
               src={item?.image}
-              className='object-cover rounded-lg aspect-square w-full h-[400px] lg:max-w-[600px] 2xl:max-w-[480px] my-0 mx-auto'
+              className='object-cover rounded-lg aspect-square w-full sm:h-[400px] lg:max-w-[600px] 2xl:max-w-[480px] my-0 mx-auto'
             />
           </div>
         ))}
