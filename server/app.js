@@ -1,13 +1,13 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
-import { client } from './utils/db.js';
-import cloudinary from 'cloudinary';
-import productRouter from './router/product.js';
-import authRouter from './router/auth.js';
-import stripeRouter from './router/stripe.js';
-import axios from 'axios';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import { client } from "./utils/db.js";
+import cloudinary from "cloudinary";
+import productRouter from "./router/product.js";
+import authRouter from "./router/auth.js";
+// import stripeRouter from "./router/stripe.js";
+import axios from "axios";
 
 async function init() {
   dotenv.config();
@@ -30,13 +30,13 @@ async function init() {
     console.log(error);
   }
 
-  app.use('/product', productRouter);
-  app.use('/auth', authRouter);
-  app.use('/stripe', stripeRouter);
-  app.use('/province', async (req, res) => {
+  app.use("/product", productRouter);
+  app.use("/auth", authRouter);
+  // app.use('/stripe', stripeRouter);
+  app.use("/province", async (req, res) => {
     try {
       const url =
-        'https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json';
+        "https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json";
       const result = await axios.get(url);
       const data = result.data;
       return res.status(200).json({ data: data });
@@ -45,12 +45,12 @@ async function init() {
     }
   });
 
-  app.get('/', (req, res) => {
-    res.send('test');
+  app.get("/", (req, res) => {
+    res.send("test");
   });
 
-  app.get('*', (req, res) => {
-    res.status(404).send('Not found endpoint');
+  app.get("*", (req, res) => {
+    res.status(404).send("Not found endpoint");
   });
 
   app.listen(port, () => {
