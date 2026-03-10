@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Dropzone from './Dropzone';
 import Input from './Input';
 import Button from './Button';
@@ -174,8 +173,6 @@ const Form = ({ params }) => {
     }
   }, [district, selectDistrict]);
 
-  if (!params?.id) return;
-
   return (
     <>
       <form className='flex flex-col gap-5 w-full py-5'>
@@ -318,12 +315,6 @@ const Form = ({ params }) => {
       </form>
     </>
   );
-};
-
-Form.propTypes = {
-  params: PropTypes.shape({
-    id: PropTypes.string,
-  }),
 };
 
 export default Form;
