@@ -1,17 +1,10 @@
-import React from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductConfirmation from '../components/ProductConfirmation';
-import Loading from '../components/Loading';
 import Form from '../components/Form';
 import { useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-} from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { FaChevronRight } from 'react-icons/fa';
 
 const UploadProductPage = () => {
@@ -139,7 +132,7 @@ const UploadProductPage = () => {
     try {
       const result = await axios.get(`${server}/province`);
       const provinceOption = result?.data?.data?.map((item) => {
-        return { id: item?.id, option: item?.name_th, amphure: item?.amphure };
+        return { id: item?.id, option: item?.name_th, amphure: item?.district };
       });
       setFetchProvince(provinceOption);
     } catch (error) {
@@ -150,18 +143,18 @@ const UploadProductPage = () => {
   const getProductById = async () => {
     try {
       const response = await axios.get(`${server}/product/${params?.id}`);
-      setSelectSellType(response.data.data[0].sell);
-      setSelectAssetType(response.data.data[0].asset);
-      setSelectProvince(response.data.data[0].province);
-      setSelectDistrict(response.data.data[0].district);
-      setSelectSubDistrict(response.data.data[0].subDistrict);
-      setSelectStatus(response.data.data[0].status);
+      setSelectSellType(response?.data?.data[0]?.sell);
+      setSelectAssetType(response?.data?.data[0]?.asset);
+      setSelectProvince(response?.data?.data[0]?.province);
+      setSelectDistrict(response?.data?.data[0]?.district);
+      setSelectSubDistrict(response?.data?.data[0]?.subDistrict);
+      setSelectStatus(response?.data?.data[0]?.status);
       setAvatars([...response.data.data[0].avatars]);
-      setName(response.data.data[0].name);
-      setPrice(response.data.data[0].price);
-      setCode(response.data.data[0].code);
-      setDescription(response.data.data[0].description);
-      setLink(response.data.data[0].link);
+      setName(response?.data?.data[0]?.name);
+      setPrice(response?.data?.data[0]?.price);
+      setCode(response?.data?.data[0]?.code);
+      setDescription(response?.data?.data[0]?.description);
+      setLink(response?.data?.data[0]?.link);
     } catch (error) {
       console.log(error);
     }
@@ -205,7 +198,7 @@ const UploadProductPage = () => {
     <>
       <main className='font-poppins flex flex-col items-center gap-5 container mx-auto'>
         <Breadcrumb
-          class='breadcrump-upload'
+          className='breadcrump-upload'
           spacing='5px'
           separator={<FaChevronRight className='text-cyan-700' />}
         >

@@ -38,13 +38,13 @@ const ProductDetails = () => {
 
   const handlePrevious = () => {
     setCurrent((prev) =>
-      prev === 0 ? productDetail[0]?.avatars.length - 1 : prev - 1
+      prev === 0 ? productDetail[0]?.avatars.length - 1 : prev - 1,
     );
   };
 
   const handleNext = () => {
     setCurrent((prev) =>
-      prev === productDetail[0]?.avatars.length - 1 ? 0 : prev + 1
+      prev === productDetail[0]?.avatars.length - 1 ? 0 : prev + 1,
     );
   };
 
@@ -58,7 +58,7 @@ const ProductDetails = () => {
         <>
           {productDetail[0]?.name && (
             <Breadcrumb
-              class='breadcrump-productDetail'
+              className='breadcrump-productDetail'
               spacing='5px'
               separator={<FaChevronRight className='text-cyan-700' />}
             >

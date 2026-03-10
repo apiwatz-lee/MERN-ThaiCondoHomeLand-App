@@ -5,7 +5,6 @@ import UploadProductPage from './pages/UploadProductPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import PageNotFoud from './pages/PageNotFoud';
 import { useAuth } from './context/Authentication';
-import RegisterPage from './pages/RegisterPage';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Modal from './components/Modal/Modal';

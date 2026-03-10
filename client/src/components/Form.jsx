@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import Dropzone from './Dropzone';
 import Input from './Input';
 import Button from './Button';
@@ -121,7 +121,11 @@ const Form = ({ params }) => {
     try {
       const result = await axios.get(`${server}/province`);
       const provinceOption = result?.data?.data?.map((item) => {
-        return { id: item?.id, option: item?.name_th, amphure: item?.amphure };
+        return {
+          id: item?.id,
+          option: item?.name_th,
+          amphure: item?.districts,
+        };
       });
       setFetchProvince(provinceOption);
     } catch (error) {
@@ -132,19 +136,24 @@ const Form = ({ params }) => {
   const handleFindDistrict = () => {
     const cloneProvice = [...fetchProvince];
     const findProvince = cloneProvice.find(
-      (item) => item?.option === selectProvince
+      (item) => item?.option === selectProvince,
     );
-    const eachDistrict = findProvince.amphure;
-    const districtOption = eachDistrict.map((item) => {
-      return { id: item?.id, option: item?.name_th, tambon: item?.tambon };
+    const eachDistrict = findProvince?.amphure;
+    const districtOption = eachDistrict?.map((item) => {
+      return {
+        id: item?.id,
+        option: item?.name_th,
+        tambon: item?.sub_districts,
+      };
     });
     setDistrict(districtOption);
   };
 
   const handleFindSubDistrict = () => {
+    if (!district) return;
     const cloneDistrict = [...district];
     const findDistrict = cloneDistrict.find(
-      (item) => item.option === selectDistrict
+      (item) => item.option === selectDistrict,
     );
     const subDistrictOption = findDistrict?.tambon?.map((item) => {
       return { id: item?.id, option: item?.name_th };
@@ -164,6 +173,8 @@ const Form = ({ params }) => {
       handleFindSubDistrict();
     }
   }, [district, selectDistrict]);
+
+  if (!params?.id) return;
 
   return (
     <>
@@ -307,6 +318,12 @@ const Form = ({ params }) => {
       </form>
     </>
   );
+};
+
+Form.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.string,
+  }),
 };
 
 export default Form;
