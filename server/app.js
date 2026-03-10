@@ -1,12 +1,12 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import bodyParser from "body-parser";
-import { client } from "./utils/db.js";
-import cloudinary from "cloudinary";
-import productRouter from "./router/product.js";
-import authRouter from "./router/auth.js";
-import axios from "axios";
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import { client } from './utils/db.js';
+import cloudinary from 'cloudinary';
+import productRouter from './router/product.js';
+import authRouter from './router/auth.js';
+import axios from 'axios';
 
 async function init() {
   dotenv.config();
@@ -29,12 +29,13 @@ async function init() {
     console.log(error);
   }
 
-  app.use("/product", productRouter);
-  app.use("/auth", authRouter);
-  app.use("/province", async (req, res) => {
+  app.use('/product', productRouter);
+  app.use('/auth', authRouter);
+  app.use('/province', async (req, res) => {
     try {
       const url =
-        "https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province_with_amphure_tambon.json";
+        'https://raw.githubusercontent.com/kongvut/thai-province-data/refs/heads/master/api/latest/province_with_district_and_sub_district.json';
+
       const result = await axios.get(url);
       const data = result.data;
       return res.status(200).json({ data: data });
@@ -43,12 +44,12 @@ async function init() {
     }
   });
 
-  app.get("/", (req, res) => {
-    res.send("test");
+  app.get('/', (req, res) => {
+    res.send('test');
   });
 
-  app.get("*", (req, res) => {
-    res.status(404).send("Not found endpoint");
+  app.get('*', (req, res) => {
+    res.status(404).send('Not found endpoint');
   });
 
   app.listen(port, () => {

@@ -39,9 +39,12 @@ const ModalFilter = () => {
   const fetchThaiData = async () => {
     try {
       const result = await axios.get(`${server}/province`);
-
       const provinceOption = result?.data?.data?.map((item) => {
-        return { id: item?.id, option: item?.name_th, amphure: item?.amphure };
+        return {
+          id: item?.id,
+          option: item?.name_th,
+          amphure: item?.districts,
+        };
       });
 
       setFetchProvince(provinceOption);
@@ -53,13 +56,11 @@ const ModalFilter = () => {
   const handleFindDistrict = () => {
     const cloneProvice = [...fetchProvince];
     const findProvince = cloneProvice.find(
-      (item) => item.option === filterProvince
+      (item) => item.option === filterProvince,
     );
-
     const eachDistrict = findProvince?.amphure;
-
     const districtOption = eachDistrict?.map((item) => {
-      return { id: item.id, option: item.name_th, tambon: item.tambon };
+      return { id: item.id, option: item.name_th, tambon: item.sub_districts };
     });
 
     setDistrict(districtOption);
@@ -68,7 +69,7 @@ const ModalFilter = () => {
   const handleFindSubDistrict = () => {
     const cloneDistrict = [...district];
     const findDistrict = cloneDistrict.find(
-      (item) => item.option === filterDistrict
+      (item) => item.option === filterDistrict,
     );
 
     const subDistrictOption = findDistrict?.tambon?.map((item) => {
